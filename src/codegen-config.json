@@ -1,0 +1,22 @@
+{
+  "packageName": "",
+  "packageVersion": "",
+  "sourceFolder": "",
+  "packageGuid": "",
+  "interfacePrefix": "",
+  "targetFramework": "netcoreapp2.0",
+  "modelPropertyNaming": "",
+  "hideGenerationTimestamp": "",
+  "sortParamsByRequiredFlag": "",
+  "useDateTimeOffset": "",
+  "useCollection": "",
+  "returnICollection": "",
+  "optionalMethodArgument": "",
+  "optionalAssemblyInfo": "",
+  "optionalProjectFile": "",
+  "nonPublicApi": "",
+  "allowUnicodeIdentifiers": "",
+  "netCoreProjectFile": "",
+  "validatable": "",
+  "caseInsensitiveResponseHeaders": ""
+}
