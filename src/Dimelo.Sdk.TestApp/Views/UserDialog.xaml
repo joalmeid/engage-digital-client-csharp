@@ -1,0 +1,24 @@
+﻿<ContentDialog
+    x:Class="Dimelo.Sdk.TestApp.Views.UserDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Dimelo.Sdk.TestApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="User"
+    PrimaryButtonText="OK"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="OK_Click"
+    SecondaryButtonClick="Cancel_Click">
+
+    <StackPanel>
+        <TextBox Header="Id" Text="{x:Bind ViewModel.CurrentUser.Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{x:Bind ViewModel.IsNew, Mode=OneWay}" />
+        <TextBox Header="First name" Text="{x:Bind ViewModel.CurrentUser.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Header="Last name" Text="{x:Bind ViewModel.CurrentUser.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Header="Screen name" Text="{x:Bind ViewModel.CurrentUser.ScreenName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Header="E-mail" Text="{x:Bind ViewModel.CurrentUser.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Header="Created" Text="{x:Bind ViewModel.CurrentUser.Created, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" />
+        <TextBox Header="Updated" Text="{x:Bind ViewModel.CurrentUser.Updated, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" />
+    </StackPanel>
+</ContentDialog>
