@@ -18,6 +18,7 @@ variables:
   buildConfiguration: Release
   buildProjects: 'src/**/*.csproj'
   testProjects: 'tests/**/*[Tt]ests/*.csproj'
+  publishFeedCredentials: 'Nuget.org'
 
 stages:
 - stage: BuildTestPublishNuget
@@ -36,3 +37,4 @@ stages:
         buildConfiguration: '$(buildConfiguration)'
         publishProjects: $(buildProjects)
         testProjects: $(testProjects)
+        publishFeedCredentials: $(publishFeedCredentials)

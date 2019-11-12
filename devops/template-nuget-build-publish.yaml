@@ -10,6 +10,7 @@ parameters:
   buildConfiguration: 'Release'
   testProjects: '**/*[Tt]ests/*.csproj'
   publishProjects: '**/*.csproj'
+  publishFeedCredentials: 'Nuget.org'
   publishOutput: $(Build.ArtifactStagingDirectory)
   publishFolder: $(Build.ArtifactStagingDirectory)
   artifactName: 'drop'
@@ -82,7 +83,7 @@ steps:
   inputs:
     command: push
     packagesToPush: ${{parameters.packagesToPush}}
-    nuGetFeedType: 'internal'
-    publishVstsFeed: ${{parameters.publishVstsFeed}}
+    nuGetFeedType: 'external'
+    publishFeedCredentials: ${{parameters.publishFeedCredentials}}
     publishPackageMetadata: true
     versioningScheme: byBuildNumber
