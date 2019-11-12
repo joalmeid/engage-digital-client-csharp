@@ -24,6 +24,9 @@ steps:
     runtime: 'core'
     updateAssemblyInfo: true
     additionalArguments: '/nocache /ensureassemblyinfo'
+- bash: |
+    #!/bin/bash
+    echo "##vso[build.updatebuildnumber]$(GitVersion.SemVer)"
 - task: UseDotNet@2
   displayName: 'Set up .Net Core 2.2'
   inputs:
