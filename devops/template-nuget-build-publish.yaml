@@ -1,0 +1,88 @@
+###########################################################################
+# Azure pipeline template for nuget packages
+# Uses GitVersion for versioning, runs dotnet build & test
+# publishes artifacts, packs nuget package and pushes it
+###########################################################################
+
+parameters:
+  assemblyVersion: '1.0'
+  buildProjects: '**/*.csproj'
+  buildConfiguration: 'Release'
+  testProjects: '**/*[Tt]ests/*.csproj'
+  publishProjects: '**/*.csproj'
+  publishFeedCredentials: 'Nuget.org'
+  publishOutput: $(Build.ArtifactStagingDirectory)
+  publishFolder: $(Build.ArtifactStagingDirectory)
+  artifactName: 'drop'
+  packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+
+steps:
+- task: GitVersion@5
+  displayName: GitVersion
+  inputs:
+    preferBundledVersion: false
+    configFilePath: $(Build.SourcesDirectory)/GitVersion.yml
+    runtime: 'core'
+    updateAssemblyInfo: true
+    additionalArguments: '/nocache /ensureassemblyinfo'
+- bash: |
+    #!/bin/bash
+    echo "##vso[build.updatebuildnumber]$(GitVersion.SemVer)"
+- task: UseDotNet@2
+  displayName: 'Set up .Net Core 2.2'
+  inputs:
+    packageType: sdk
+    version: 2.2.x
+- task: DotNetCoreCLI@2
+  displayName: 'Restore'
+  inputs: 
+    command: restore
+    projects: |
+      ${{parameters.buildProjects}}
+      ${{parameters.testProjects}}
+    feedsToUse: 'select'
+    vstsFeed: ${{parameters.vstsFeed}}
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs: 
+    command: 'build'
+    projects: |
+      ${{parameters.buildProjects}}
+      ${{parameters.testProjects}}
+    arguments: '--configuration ${{parameters.buildConfiguration}} /p:Version=$(GitVersion.AssemblySemVer) /p:AssemblyVersion=$(GitVersion.AssemblySemFileVer) /p:InformationalVersion=$(GitVersion.AssemblySemFileVer) --no-restore'
+- task: DotNetCoreCLI@2
+  displayName: 'Run Test & Collect Code Coverage'
+  inputs:
+    command: 'test'
+    projects: ${{parameters.testProjects}}
+    arguments: '--no-build --configuration ${{parameters.buildConfiguration}} --logger:${{parameters.logger}} --test-adapter-path:. /p:CollectCoverage=true /p:CoverletOutputFormat=${{parameters.CoverletOutputFormat}}'
+    publishTestResults: true
+- task: DotNetCoreCLI@2
+  displayName: 'Publish'
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: ${{parameters.publishProjects}}
+    arguments: '--configuration ${{parameters.buildConfiguration}} --no-build --output ${{parameters.publishOutput}}'
+    zipAfterPublish: false
+- publish: ${{parameters.publishFolder}}
+  displayName: 'Publish Build Artifacts'
+  artifact: ${{parameters.artifactName}}
+  condition: succeededOrFailed()
+- task: DotNetCoreCLI@2
+  displayName: "dotnet pack"
+  inputs:
+    command: 'pack'
+    arguments: '--configuration ${{parameters.buildConfiguration}}'
+    packagesToPack: ${{parameters.buildProjects}}
+    nobuild: true
+    versioningScheme: byEnvVar
+    versionEnvVar: GitVersion.NuGetVersionV2
+- task: NuGetCommand@2
+  displayName: 'Push NuGet Package'
+  inputs:
+    command: 'push'
+    packagesToPush: ${{parameters.packagesToPush}}
+    nuGetFeedType: 'external'
+    publishFeedCredentials: ${{parameters.publishFeedCredentials}}
+  

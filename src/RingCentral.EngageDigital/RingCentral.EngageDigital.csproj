@@ -11,6 +11,8 @@
     <Description>RingCentral Engage Digital SDK for .NET</Description>
     <Copyright>No Copyright</Copyright>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <RootNamespace>RingCentral.EngageDigital</RootNamespace>
