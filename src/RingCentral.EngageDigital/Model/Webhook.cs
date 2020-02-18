@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Webhook
     /// </summary>
     [DataContract]
-        internal partial class Webhook :  IEquatable<Webhook>
+        public partial class Webhook :  IEquatable<Webhook>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Webhook" /> class.

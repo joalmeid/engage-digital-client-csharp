@@ -20,7 +20,7 @@ namespace RingCentral.EngageDigital.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        internal interface IInterventionsApi : IApiAccessor
+    internal interface IInterventionsApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -357,7 +357,7 @@ namespace RingCentral.EngageDigital.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        internal partial class InterventionsApi : IInterventionsApi
+    public partial class InterventionsApi : IInterventionsApi
     {
         private RingCentral.EngageDigital.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 

@@ -313,7 +313,7 @@ namespace RingCentral.EngageDigital.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        internal partial class CategoriesApi : ICategoriesApi
+        public partial class CategoriesApi : ICategoriesApi
     {
         private RingCentral.EngageDigital.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 

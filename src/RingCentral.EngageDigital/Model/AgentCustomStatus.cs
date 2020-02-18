@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// The \&quot;custom_status\&quot; attribute represent the custom \&quot;away\&quot; status selected, it can either be: * 1. null — ​The agent is available or in the generic \&quot;Away\&quot; status 2. { \&quot;id\&quot;:\&quot;5582b1f4776562af9b000008\&quot; } — ​The id of the custom status
     /// </summary>
     [DataContract]
-        internal partial class AgentCustomStatus :  IEquatable<AgentCustomStatus>
+        public partial class AgentCustomStatus :  IEquatable<AgentCustomStatus>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AgentCustomStatus" /> class.

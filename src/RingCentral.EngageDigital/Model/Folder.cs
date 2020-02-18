@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Folder
     /// </summary>
     [DataContract]
-        internal partial class Folder :  IEquatable<Folder>
+        public partial class Folder :  IEquatable<Folder>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Folder" /> class.

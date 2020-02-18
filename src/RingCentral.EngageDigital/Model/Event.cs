@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Event
     /// </summary>
     [DataContract]
-        internal partial class Event :  IEquatable<Event>
+        public partial class Event :  IEquatable<Event>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Event" /> class.

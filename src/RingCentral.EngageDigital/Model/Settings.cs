@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Settings
     /// </summary>
     [DataContract]
-        internal partial class Settings :  IEquatable<Settings>
+        public partial class Settings :  IEquatable<Settings>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Settings" /> class.

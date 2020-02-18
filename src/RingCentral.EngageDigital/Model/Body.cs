@@ -25,13 +25,13 @@ namespace RingCentral.EngageDigital.Model
     /// Body
     /// </summary>
     [DataContract]
-        internal partial class Body :  IEquatable<Body>
+    public partial class Body : IEquatable<Body>
     {
         /// <summary>
         /// Defines Private
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                internal enum PrivateEnum
+        public enum PrivateEnum
         {
             /// <summary>
             /// Enum True for value: true
@@ -42,11 +42,12 @@ namespace RingCentral.EngageDigital.Model
             /// Enum _1 for value: =1
             /// </summary>
             [EnumMember(Value = "=1")]
-            _1 = 1        }
+            _1 = 1
+        }
         /// <summary>
         /// Gets or Sets Private
         /// </summary>
-        [DataMember(Name="private", EmitDefaultValue=false)]
+        [DataMember(Name = "private", EmitDefaultValue = false)]
         public PrivateEnum? Private { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Body" /> class.
@@ -58,11 +59,11 @@ namespace RingCentral.EngageDigital.Model
             this.File = file;
             this.Private = _private;
         }
-        
+
         /// <summary>
         /// Gets or Sets File
         /// </summary>
-        [DataMember(Name="file", EmitDefaultValue=false)]
+        [DataMember(Name = "file", EmitDefaultValue = false)]
         public byte[] File { get; set; }
 
 
@@ -79,7 +80,7 @@ namespace RingCentral.EngageDigital.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
@@ -109,12 +110,12 @@ namespace RingCentral.EngageDigital.Model
             if (input == null)
                 return false;
 
-            return 
+            return
                 (
                     this.File == input.File ||
                     (this.File != null &&
                     this.File.Equals(input.File))
-                ) && 
+                ) &&
                 (
                     this.Private == input.Private ||
                     (this.Private != null &&

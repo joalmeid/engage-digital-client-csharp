@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Channel
     /// </summary>
     [DataContract]
-        internal partial class Channel :  IEquatable<Channel>
+        public partial class Channel :  IEquatable<Channel>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Channel" /> class.

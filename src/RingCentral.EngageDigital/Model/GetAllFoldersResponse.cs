@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// GetAllFoldersResponse
     /// </summary>
     [DataContract]
-        internal partial class GetAllFoldersResponse :  IEquatable<GetAllFoldersResponse>
+        public partial class GetAllFoldersResponse :  IEquatable<GetAllFoldersResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAllFoldersResponse" /> class.

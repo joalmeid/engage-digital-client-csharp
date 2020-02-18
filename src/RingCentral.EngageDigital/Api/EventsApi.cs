@@ -123,7 +123,7 @@ namespace RingCentral.EngageDigital.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        internal partial class EventsApi : IEventsApi
+        public partial class EventsApi : IEventsApi
     {
         private RingCentral.EngageDigital.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 

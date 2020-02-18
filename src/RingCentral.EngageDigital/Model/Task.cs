@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Task
     /// </summary>
     [DataContract]
-        internal partial class Task :  IEquatable<Task>
+        public partial class Task :  IEquatable<Task>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Task" /> class.

@@ -25,14 +25,14 @@ namespace RingCentral.EngageDigital.Model
     /// Source
     /// </summary>
     [DataContract]
-        internal partial class Source :  IEquatable<Source>
+        public partial class Source :  IEquatable<Source>
     {
         /// <summary>
         /// SLA expired strategy (\&quot;max\&quot;, \&quot;half\&quot; or \&quot;base\&quot;)
         /// </summary>
         /// <value>SLA expired strategy (\&quot;max\&quot;, \&quot;half\&quot; or \&quot;base\&quot;)</value>
         [JsonConverter(typeof(StringEnumConverter))]
-                internal enum SlaExpiredStrategyEnum
+                public enum SlaExpiredStrategyEnum
         {
             /// <summary>
             /// Enum Max for value: max

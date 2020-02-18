@@ -69,7 +69,7 @@ namespace RingCentral.EngageDigital.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        internal partial class LocalesApi : ILocalesApi
+        public partial class LocalesApi : ILocalesApi
     {
         private RingCentral.EngageDigital.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 

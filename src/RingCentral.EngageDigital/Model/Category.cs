@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Category
     /// </summary>
     [DataContract]
-        internal partial class Category :  IEquatable<Category>
+        public partial class Category :  IEquatable<Category>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Category" /> class.

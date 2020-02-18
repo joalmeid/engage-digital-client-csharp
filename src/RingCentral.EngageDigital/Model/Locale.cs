@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Locale
     /// </summary>
     [DataContract]
-        internal partial class Locale :  IEquatable<Locale>
+        public partial class Locale :  IEquatable<Locale>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Locale" /> class.

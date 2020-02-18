@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Tag
     /// </summary>
     [DataContract]
-        internal partial class Tag :  IEquatable<Tag>
+        public partial class Tag :  IEquatable<Tag>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Tag" /> class.

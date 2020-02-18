@@ -269,7 +269,7 @@ namespace RingCentral.EngageDigital.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        internal partial class ReplyAssistantEntriesApi : IReplyAssistantEntriesApi
+        public partial class ReplyAssistantEntriesApi : IReplyAssistantEntriesApi
     {
         private RingCentral.EngageDigital.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 

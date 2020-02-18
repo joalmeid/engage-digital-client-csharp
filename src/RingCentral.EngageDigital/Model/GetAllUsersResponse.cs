@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// GetAllUsersResponse
     /// </summary>
     [DataContract]
-        internal partial class GetAllUsersResponse :  IEquatable<GetAllUsersResponse>
+        public partial class GetAllUsersResponse :  IEquatable<GetAllUsersResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAllUsersResponse" /> class.

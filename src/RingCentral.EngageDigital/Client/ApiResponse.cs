@@ -15,7 +15,7 @@ namespace RingCentral.EngageDigital.Client
     /// <summary>
     /// API Response
     /// </summary>
-        internal class ApiResponse<T>
+        public class ApiResponse<T>
     {
         /// <summary>
         /// Gets or sets the status code (HTTP status code)

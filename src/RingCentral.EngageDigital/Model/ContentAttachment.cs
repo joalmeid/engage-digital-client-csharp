@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// ContentAttachment
     /// </summary>
     [DataContract]
-        internal partial class ContentAttachment :  IEquatable<ContentAttachment>
+        public partial class ContentAttachment :  IEquatable<ContentAttachment>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentAttachment" /> class.

@@ -26,7 +26,7 @@ namespace RingCentral.EngageDigital.Model
     /// Timezone
     /// </summary>
     [DataContract]
-        internal partial class Timezone : IEquatable<Timezone>, IValidatableObject
+        public partial class Timezone : IEquatable<Timezone>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Timezone" /> class.

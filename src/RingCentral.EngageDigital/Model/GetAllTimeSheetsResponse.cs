@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// GetAllTimeSheetsResponse
     /// </summary>
     [DataContract]
-        internal partial class GetAllTimeSheetsResponse :  IEquatable<GetAllTimeSheetsResponse>
+        public partial class GetAllTimeSheetsResponse :  IEquatable<GetAllTimeSheetsResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAllTimeSheetsResponse" /> class.

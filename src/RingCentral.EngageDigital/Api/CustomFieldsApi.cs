@@ -281,7 +281,7 @@ namespace RingCentral.EngageDigital.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        internal partial class CustomFieldsApi : ICustomFieldsApi
+        public partial class CustomFieldsApi : ICustomFieldsApi
     {
         private RingCentral.EngageDigital.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 

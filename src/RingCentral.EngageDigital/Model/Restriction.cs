@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Restriction
     /// </summary>
     [DataContract]
-        internal partial class Restriction :  IEquatable<Restriction>
+        public partial class Restriction :  IEquatable<Restriction>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Restriction" /> class.
