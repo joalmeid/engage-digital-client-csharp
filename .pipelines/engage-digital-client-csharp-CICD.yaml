@@ -17,7 +17,7 @@ pool:
 variables:
   buildConfiguration: Release
   buildProjects: 'src/**/*.csproj'
-  testProjects: 'tests/**/*[Tt]ests/*.csproj'
+  testProjects: 'tests/**/*[Tt]est/*.csproj'
   publishFeedCredentials: 'Nuget.org'
 
 stages:
