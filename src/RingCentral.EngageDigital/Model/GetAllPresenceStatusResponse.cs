@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// GetAllPresenceStatusResponse
     /// </summary>
     [DataContract]
-        internal partial class GetAllPresenceStatusResponse :  IEquatable<GetAllPresenceStatusResponse>
+        public partial class GetAllPresenceStatusResponse :  IEquatable<GetAllPresenceStatusResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAllPresenceStatusResponse" /> class.

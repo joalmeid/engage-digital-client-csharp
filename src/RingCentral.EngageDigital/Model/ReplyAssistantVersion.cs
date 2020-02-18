@@ -25,13 +25,13 @@ namespace RingCentral.EngageDigital.Model
     /// ReplyAssistantVersion
     /// </summary>
     [DataContract]
-        internal partial class ReplyAssistantVersion :  IEquatable<ReplyAssistantVersion>
+        public partial class ReplyAssistantVersion :  IEquatable<ReplyAssistantVersion>
     {
         /// <summary>
         /// Defines Format
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                internal enum FormatEnum
+                public enum FormatEnum
         {
             /// <summary>
             /// Enum Text for value: text

@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// PresenceStatus
     /// </summary>
     [DataContract]
-        internal partial class PresenceStatus :  IEquatable<PresenceStatus>
+        public partial class PresenceStatus :  IEquatable<PresenceStatus>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PresenceStatus" /> class.

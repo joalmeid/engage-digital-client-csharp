@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Team
     /// </summary>
     [DataContract]
-        internal partial class Team :  IEquatable<Team>
+        public partial class Team :  IEquatable<Team>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Team" /> class.

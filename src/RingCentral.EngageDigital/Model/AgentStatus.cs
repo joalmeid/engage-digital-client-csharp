@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// AgentStatus
     /// </summary>
     [DataContract]
-        internal partial class AgentStatus :  IEquatable<AgentStatus>
+        public partial class AgentStatus :  IEquatable<AgentStatus>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AgentStatus" /> class.

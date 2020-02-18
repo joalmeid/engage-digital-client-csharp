@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// ReplyAssistantGroup
     /// </summary>
     [DataContract]
-        internal partial class ReplyAssistantGroup :  IEquatable<ReplyAssistantGroup>
+        public partial class ReplyAssistantGroup :  IEquatable<ReplyAssistantGroup>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ReplyAssistantGroup" /> class.

@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// InterventionComment
     /// </summary>
     [DataContract]
-        internal partial class InterventionComment :  IEquatable<InterventionComment>
+        public partial class InterventionComment :  IEquatable<InterventionComment>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="InterventionComment" /> class.

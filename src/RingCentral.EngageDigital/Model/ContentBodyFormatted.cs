@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// always contains text a​nd​ html versions.
     /// </summary>
     [DataContract]
-        internal partial class ContentBodyFormatted :  IEquatable<ContentBodyFormatted>
+        public partial class ContentBodyFormatted :  IEquatable<ContentBodyFormatted>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentBodyFormatted" /> class.

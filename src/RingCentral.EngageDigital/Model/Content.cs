@@ -25,14 +25,14 @@ namespace RingCentral.EngageDigital.Model
     /// Content
     /// </summary>
     [DataContract]
-        internal partial class Content :  IEquatable<Content>
+        public partial class Content :  IEquatable<Content>
     {
         /// <summary>
         /// values can be: text or html.
         /// </summary>
         /// <value>values can be: text or html.</value>
         [JsonConverter(typeof(StringEnumConverter))]
-                internal enum BodyInputFormatEnum
+                public enum BodyInputFormatEnum
         {
             /// <summary>
             /// Enum Text for value: text

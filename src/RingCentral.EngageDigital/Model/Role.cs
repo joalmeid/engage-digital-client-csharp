@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Role
     /// </summary>
     [DataContract]
-        internal partial class Role :  IEquatable<Role>
+        public partial class Role :  IEquatable<Role>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Role" /> class.

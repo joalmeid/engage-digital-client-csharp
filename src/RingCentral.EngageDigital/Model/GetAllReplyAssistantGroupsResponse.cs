@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// GetAllReplyAssistantGroupsResponse
     /// </summary>
     [DataContract]
-        internal partial class GetAllReplyAssistantGroupsResponse :  IEquatable<GetAllReplyAssistantGroupsResponse>
+        public partial class GetAllReplyAssistantGroupsResponse :  IEquatable<GetAllReplyAssistantGroupsResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAllReplyAssistantGroupsResponse" /> class.

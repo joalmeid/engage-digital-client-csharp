@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// GetAllWebhooksResponse
     /// </summary>
     [DataContract]
-        internal partial class GetAllWebhooksResponse :  IEquatable<GetAllWebhooksResponse>
+        public partial class GetAllWebhooksResponse :  IEquatable<GetAllWebhooksResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAllWebhooksResponse" /> class.

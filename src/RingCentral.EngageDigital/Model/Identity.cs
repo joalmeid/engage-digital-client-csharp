@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Identity
     /// </summary>
     [DataContract]
-        internal partial class Identity :  IEquatable<Identity>
+        public partial class Identity :  IEquatable<Identity>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Identity" /> class.

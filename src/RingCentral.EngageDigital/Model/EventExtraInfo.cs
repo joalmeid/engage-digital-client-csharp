@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// attributes in extra_infos are optional and unspecified/not guaranteed, don’t rely on it for critical tasks, this is provided as information only
     /// </summary>
     [DataContract]
-        internal partial class EventExtraInfo :  IEquatable<EventExtraInfo>
+        public partial class EventExtraInfo :  IEquatable<EventExtraInfo>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EventExtraInfo" /> class.

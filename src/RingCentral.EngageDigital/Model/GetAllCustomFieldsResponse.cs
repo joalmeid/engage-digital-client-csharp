@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// GetAllCustomFieldsResponse
     /// </summary>
     [DataContract]
-        internal partial class GetAllCustomFieldsResponse :  IEquatable<GetAllCustomFieldsResponse>
+        public partial class GetAllCustomFieldsResponse :  IEquatable<GetAllCustomFieldsResponse>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAllCustomFieldsResponse" /> class.

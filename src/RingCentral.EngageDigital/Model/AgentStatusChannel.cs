@@ -25,13 +25,13 @@ namespace RingCentral.EngageDigital.Model
     /// AgentStatusChannel
     /// </summary>
     [DataContract]
-        internal partial class AgentStatusChannel :  IEquatable<AgentStatusChannel>
+        public partial class AgentStatusChannel :  IEquatable<AgentStatusChannel>
     {
         /// <summary>
         /// Defines Busyness
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-                internal enum BusynessEnum
+                public enum BusynessEnum
         {
             /// <summary>
             /// Enum Unoccupied for value: unoccupied

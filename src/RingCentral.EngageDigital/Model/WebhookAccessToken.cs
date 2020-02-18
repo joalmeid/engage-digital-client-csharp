@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// WebhookAccessToken
     /// </summary>
     [DataContract]
-        internal partial class WebhookAccessToken :  IEquatable<WebhookAccessToken>
+        public partial class WebhookAccessToken :  IEquatable<WebhookAccessToken>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="WebhookAccessToken" /> class.

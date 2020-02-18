@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// TimeSheetHoliday
     /// </summary>
     [DataContract]
-        internal partial class TimeSheetHoliday :  IEquatable<TimeSheetHoliday>
+        public partial class TimeSheetHoliday :  IEquatable<TimeSheetHoliday>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeSheetHoliday" /> class.

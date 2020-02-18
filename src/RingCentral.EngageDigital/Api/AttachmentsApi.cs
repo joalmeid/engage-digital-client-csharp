@@ -161,7 +161,7 @@ namespace RingCentral.EngageDigital.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        internal partial class AttachmentsApi : IAttachmentsApi
+        public partial class AttachmentsApi : IAttachmentsApi
     {
         private RingCentral.EngageDigital.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 

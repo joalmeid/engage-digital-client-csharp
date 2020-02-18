@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Thread
     /// </summary>
     [DataContract]
-        internal partial class Thread :  IEquatable<Thread>
+        public partial class Thread :  IEquatable<Thread>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Thread" /> class.

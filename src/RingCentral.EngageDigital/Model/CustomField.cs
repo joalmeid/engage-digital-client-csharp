@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// CustomField
     /// </summary>
     [DataContract]
-        internal partial class CustomField :  IEquatable<CustomField>
+        public partial class CustomField :  IEquatable<CustomField>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomField" /> class.

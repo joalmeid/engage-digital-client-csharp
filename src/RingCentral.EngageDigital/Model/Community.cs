@@ -25,7 +25,7 @@ namespace RingCentral.EngageDigital.Model
     /// Community
     /// </summary>
     [DataContract]
-        internal partial class Community :  IEquatable<Community>
+        public partial class Community :  IEquatable<Community>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Community" /> class.
