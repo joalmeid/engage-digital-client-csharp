@@ -13,12 +13,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
+//using RestSharp;
 using NUnit.Framework;
-
-using RingCentral.Engage.Client;
-using RingCentral.Engage.Api;
-using RingCentral.Engage.Model;
+using RingCentral.EngageDigital.Client;
+using RingCentral.EngageDigital.Api;
+using RingCentral.EngageDigital.Model;
 
 namespace RingCentral.Engage.Test
 {

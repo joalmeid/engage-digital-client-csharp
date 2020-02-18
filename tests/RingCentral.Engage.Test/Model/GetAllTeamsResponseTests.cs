@@ -14,9 +14,9 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using RingCentral.Engage.Api;
-using RingCentral.Engage.Model;
-using RingCentral.Engage.Client;
+using RingCentral.EngageDigital.Api;
+using RingCentral.EngageDigital.Model;
+using RingCentral.EngageDigital.Client;
 using System.Reflection;
 using Newtonsoft.Json;
 
