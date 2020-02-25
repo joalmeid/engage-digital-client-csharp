@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GetReplyAssistantEntry**](ReplyAssistantEntriesApi.md#getreplyassistantentry) | **GET** /reply_assistant/entries/{replyAssistantEntryId} | Getting a reply assistant entry from its id
 [**UpdateReplyAssistantEntry**](ReplyAssistantEntriesApi.md#updatereplyassistantentry) | **PUT** /reply_assistant/entries/{replyAssistantEntryId} | Updating a reply assistant entry
 
+
 <a name="createreplyassistantentry"></a>
 # **CreateReplyAssistantEntry**
 > ReplyAssistantEntry CreateReplyAssistantEntry (string label)
@@ -20,7 +21,7 @@ This method creates a reply assistant entry. In case of success it renders the e
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -30,9 +31,11 @@ namespace Example
 {
     public class CreateReplyAssistantEntryExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantEntriesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantEntriesApi(config);
             var label = label_example;  // string | The name of the entry.
 
             try
@@ -41,9 +44,11 @@ namespace Example
                 ReplyAssistantEntry result = apiInstance.CreateReplyAssistantEntry(label);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantEntriesApi.CreateReplyAssistantEntry: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -69,7 +74,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletereplyassistantentry"></a>
 # **DeleteReplyAssistantEntry**
 > ReplyAssistantEntry DeleteReplyAssistantEntry (string replyAssistantEntryId)
@@ -80,7 +91,7 @@ This method destroys an existing entry. It renders the entry itself. It renders 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -90,9 +101,11 @@ namespace Example
 {
     public class DeleteReplyAssistantEntryExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantEntriesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantEntriesApi(config);
             var replyAssistantEntryId = replyAssistantEntryId_example;  // string | 
 
             try
@@ -101,9 +114,11 @@ namespace Example
                 ReplyAssistantEntry result = apiInstance.DeleteReplyAssistantEntry(replyAssistantEntryId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantEntriesApi.DeleteReplyAssistantEntry: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -129,7 +144,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallreplyassistantentries"></a>
 # **GetAllReplyAssistantEntries**
 > GetAllReplyAssistantEntriesResponse GetAllReplyAssistantEntries (int? offset = null, int? limit = null)
@@ -140,7 +161,7 @@ This method renders all entries ordered by creation date (ascending).  Authoriza
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -150,9 +171,11 @@ namespace Example
 {
     public class GetAllReplyAssistantEntriesExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantEntriesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantEntriesApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -162,9 +185,11 @@ namespace Example
                 GetAllReplyAssistantEntriesResponse result = apiInstance.GetAllReplyAssistantEntries(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantEntriesApi.GetAllReplyAssistantEntries: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -191,7 +216,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getreplyassistantentry"></a>
 # **GetReplyAssistantEntry**
 > ReplyAssistantEntry GetReplyAssistantEntry (string replyAssistantEntryId)
@@ -202,7 +233,7 @@ This method renders an entry from given id.  Authorization​: only users that h
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -212,9 +243,11 @@ namespace Example
 {
     public class GetReplyAssistantEntryExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantEntriesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantEntriesApi(config);
             var replyAssistantEntryId = replyAssistantEntryId_example;  // string | 
 
             try
@@ -223,9 +256,11 @@ namespace Example
                 ReplyAssistantEntry result = apiInstance.GetReplyAssistantEntry(replyAssistantEntryId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantEntriesApi.GetReplyAssistantEntry: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -251,10 +286,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatereplyassistantentry"></a>
 # **UpdateReplyAssistantEntry**
-> ReplyAssistantEntry UpdateReplyAssistantEntry (string replyAssistantEntryId, string label = null, string foreignId = null, List<string> categoryIds = null, List<string> shortcuts = null, string entryGroupId = null, List<string> sourceIds = null)
+> ReplyAssistantEntry UpdateReplyAssistantEntry (string replyAssistantEntryId, string label = null, string foreignId = null, Collection<string> categoryIds = null, Collection<string> shortcuts = null, string entryGroupId = null, Collection<string> sourceIds = null)
 
 Updating a reply assistant entry
 
@@ -262,7 +303,7 @@ This method updates an existing entry from given attributes and renders it in ca
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -272,16 +313,18 @@ namespace Example
 {
     public class UpdateReplyAssistantEntryExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantEntriesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantEntriesApi(config);
             var replyAssistantEntryId = replyAssistantEntryId_example;  // string | 
             var label = label_example;  // string | The name of the entry. (optional) 
             var foreignId = foreignId_example;  // string | The internal/company id of the entry. This is used to match Engage Digital entry’s id with the company one. Example: KB042. (optional) 
-            var categoryIds = new List<string>(); // List<string> | To restrict the entry to a set of Engage Digital categories. Then, KB entries that do not match message’s categories to which you are replying will not be suggested. (optional) 
-            var shortcuts = new List<string>(); // List<string> | entry shortcuts (optional) 
+            var categoryIds = new Collection<string>(); // Collection<string> | To restrict the entry to a set of Engage Digital categories. Then, KB entries that do not match message’s categories to which you are replying will not be suggested. (optional) 
+            var shortcuts = new Collection<string>(); // Collection<string> | entry shortcuts (optional) 
             var entryGroupId = entryGroupId_example;  // string | Entry group id. (optional) 
-            var sourceIds = new List<string>(); // List<string> | Source ids (array) (optional) 
+            var sourceIds = new Collection<string>(); // Collection<string> | Source ids (array) (optional) 
 
             try
             {
@@ -289,9 +332,11 @@ namespace Example
                 ReplyAssistantEntry result = apiInstance.UpdateReplyAssistantEntry(replyAssistantEntryId, label, foreignId, categoryIds, shortcuts, entryGroupId, sourceIds);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantEntriesApi.UpdateReplyAssistantEntry: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -305,10 +350,10 @@ Name | Type | Description  | Notes
  **replyAssistantEntryId** | **string**|  | 
  **label** | **string**| The name of the entry. | [optional] 
  **foreignId** | **string**| The internal/company id of the entry. This is used to match Engage Digital entry’s id with the company one. Example: KB042. | [optional] 
- **categoryIds** | [**List&lt;string&gt;**](string.md)| To restrict the entry to a set of Engage Digital categories. Then, KB entries that do not match message’s categories to which you are replying will not be suggested. | [optional] 
- **shortcuts** | [**List&lt;string&gt;**](string.md)| entry shortcuts | [optional] 
+ **categoryIds** | [**Collection&lt;string&gt;**](string.md)| To restrict the entry to a set of Engage Digital categories. Then, KB entries that do not match message’s categories to which you are replying will not be suggested. | [optional] 
+ **shortcuts** | [**Collection&lt;string&gt;**](string.md)| entry shortcuts | [optional] 
  **entryGroupId** | **string**| Entry group id. | [optional] 
- **sourceIds** | [**List&lt;string&gt;**](string.md)| Source ids (array) | [optional] 
+ **sourceIds** | [**Collection&lt;string&gt;**](string.md)| Source ids (array) | [optional] 
 
 ### Return type
 
@@ -323,4 +368,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

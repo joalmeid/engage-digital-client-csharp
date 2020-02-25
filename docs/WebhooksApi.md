@@ -10,9 +10,10 @@ Method | HTTP request | Description
 [**GetWebhook**](WebhooksApi.md#getwebhook) | **GET** /webhooks/{webhookId} | Getting a webhook from its id
 [**UpdateWebhook**](WebhooksApi.md#updatewebhook) | **PUT** /webhooks/{webhookId} | Updating a webhook
 
+
 <a name="createwebhook"></a>
 # **CreateWebhook**
-> Webhook CreateWebhook (string accessToken, string label, string url, List<string> registeredEvents, bool? active = null, bool? stagingUse = null, string verifyToken = null, string secret = null)
+> Webhook CreateWebhook (string accessToken, string label, string url, Collection<string> registeredEvents, bool? active = null, bool? stagingUse = null, string verifyToken = null, string secret = null)
 
 Creating a webhook
 
@@ -20,7 +21,7 @@ This method creates a webhook. In case of success it renders the webhook, otherw
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -30,13 +31,15 @@ namespace Example
 {
     public class CreateWebhookExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new WebhooksApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new WebhooksApi(config);
             var accessToken = accessToken_example;  // string | Access token.
             var label = label_example;  // string | The label of the webhook.
             var url = url_example;  // string | The url of a webhook. This is used to determine the endpoint of your webhook, where
-            var registeredEvents = new List<string>(); // List<string> | An array containing all the events that your webhook wants to subscribe.
+            var registeredEvents = registeredEvents_example;  // Collection<string> | An array containing all the events that your webhook wants to subscribe.
             var active = true;  // bool? | true or false, this field is used to enable/disable a webhook. (optional) 
             var stagingUse = true;  // bool? | true or false, this field is used to determine if a webhook will be run in staging (optional) 
             var verifyToken = verifyToken_example;  // string | The token used in your webhook. (optional) 
@@ -48,9 +51,11 @@ namespace Example
                 Webhook result = apiInstance.CreateWebhook(accessToken, label, url, registeredEvents, active, stagingUse, verifyToken, secret);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling WebhooksApi.CreateWebhook: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -64,7 +69,7 @@ Name | Type | Description  | Notes
  **accessToken** | **string**| Access token. | 
  **label** | **string**| The label of the webhook. | 
  **url** | **string**| The url of a webhook. This is used to determine the endpoint of your webhook, where | 
- **registeredEvents** | [**List&lt;string&gt;**](string.md)| An array containing all the events that your webhook wants to subscribe. | 
+ **registeredEvents** | **Collection&lt;string&gt;**| An array containing all the events that your webhook wants to subscribe. | 
  **active** | **bool?**| true or false, this field is used to enable/disable a webhook. | [optional] 
  **stagingUse** | **bool?**| true or false, this field is used to determine if a webhook will be run in staging | [optional] 
  **verifyToken** | **string**| The token used in your webhook. | [optional] 
@@ -83,7 +88,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletewebhook"></a>
 # **DeleteWebhook**
 > Webhook DeleteWebhook (string webhookId, string accessToken)
@@ -94,7 +105,7 @@ This method destroys an existing webhook. It renders webhook itself. It renders 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -104,9 +115,11 @@ namespace Example
 {
     public class DeleteWebhookExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new WebhooksApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new WebhooksApi(config);
             var webhookId = webhookId_example;  // string | 
             var accessToken = accessToken_example;  // string | Access token.
 
@@ -116,9 +129,11 @@ namespace Example
                 Webhook result = apiInstance.DeleteWebhook(webhookId, accessToken);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling WebhooksApi.DeleteWebhook: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -145,7 +160,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallwebhooks"></a>
 # **GetAllWebhooks**
 > GetAllWebhooksResponse GetAllWebhooks (string accessToken, int? offset = null, int? limit = null)
@@ -156,7 +177,7 @@ This method renders webhooks ordered by active and staging_use (descending).  Au
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -166,9 +187,11 @@ namespace Example
 {
     public class GetAllWebhooksExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new WebhooksApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new WebhooksApi(config);
             var accessToken = accessToken_example;  // string | Access token.
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
@@ -179,9 +202,11 @@ namespace Example
                 GetAllWebhooksResponse result = apiInstance.GetAllWebhooks(accessToken, offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling WebhooksApi.GetAllWebhooks: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -209,7 +234,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getwebhook"></a>
 # **GetWebhook**
 > Webhook GetWebhook (string webhookId, string accessToken)
@@ -220,7 +251,7 @@ This method renders a webhook from given id.  Authorization​: users having man
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -230,9 +261,11 @@ namespace Example
 {
     public class GetWebhookExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new WebhooksApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new WebhooksApi(config);
             var webhookId = webhookId_example;  // string | 
             var accessToken = accessToken_example;  // string | Access token.
 
@@ -242,9 +275,11 @@ namespace Example
                 Webhook result = apiInstance.GetWebhook(webhookId, accessToken);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling WebhooksApi.GetWebhook: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -271,10 +306,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatewebhook"></a>
 # **UpdateWebhook**
-> Webhook UpdateWebhook (string webhookId, string accessToken, bool? active = null, string label = null, bool? stagingUse = null, string url = null, string verifyToken = null, string secret = null, List<string> registeredEvents = null)
+> Webhook UpdateWebhook (string webhookId, string accessToken, bool? active = null, string label = null, bool? stagingUse = null, string url = null, string verifyToken = null, string secret = null, Collection<string> registeredEvents = null)
 
 Updating a webhook
 
@@ -282,7 +323,7 @@ This method updates an existing webhook from given attributes and renders it in 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -292,9 +333,11 @@ namespace Example
 {
     public class UpdateWebhookExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new WebhooksApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new WebhooksApi(config);
             var webhookId = webhookId_example;  // string | 
             var accessToken = accessToken_example;  // string | Access token.
             var active = true;  // bool? | true or false, this field is used to enable/disable a webhook. (optional) 
@@ -303,7 +346,7 @@ namespace Example
             var url = url_example;  // string | The url of a webhook. This is used to determine the endpoint of your webhook, where (optional) 
             var verifyToken = verifyToken_example;  // string | The token used in your webhook. (optional) 
             var secret = secret_example;  // string | The secret key that will be served as a ​`X-Dimelo-Secret​` header in every request. (optional) 
-            var registeredEvents = new List<string>(); // List<string> | An array containing all the events that your webhook wants to subscribe. (optional) 
+            var registeredEvents = new Collection<string>(); // Collection<string> | An array containing all the events that your webhook wants to subscribe. (optional) 
 
             try
             {
@@ -311,9 +354,11 @@ namespace Example
                 Webhook result = apiInstance.UpdateWebhook(webhookId, accessToken, active, label, stagingUse, url, verifyToken, secret, registeredEvents);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling WebhooksApi.UpdateWebhook: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -332,7 +377,7 @@ Name | Type | Description  | Notes
  **url** | **string**| The url of a webhook. This is used to determine the endpoint of your webhook, where | [optional] 
  **verifyToken** | **string**| The token used in your webhook. | [optional] 
  **secret** | **string**| The secret key that will be served as a ​&#x60;X-Dimelo-Secret​&#x60; header in every request. | [optional] 
- **registeredEvents** | [**List&lt;string&gt;**](string.md)| An array containing all the events that your webhook wants to subscribe. | [optional] 
+ **registeredEvents** | [**Collection&lt;string&gt;**](string.md)| An array containing all the events that your webhook wants to subscribe. | [optional] 
 
 ### Return type
 
@@ -347,4 +392,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

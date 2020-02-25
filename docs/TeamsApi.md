@@ -10,9 +10,10 @@ Method | HTTP request | Description
 [**GetTeam**](TeamsApi.md#getteam) | **GET** /teams/{teamId} | Getting a team from its id
 [**UpdateTeam**](TeamsApi.md#updateteam) | **PUT** /teams/{teamId} | Updating a team
 
+
 <a name="createteam"></a>
 # **CreateTeam**
-> Team CreateTeam (string name = null, List<string> leaderIds = null, List<string> userIds = null)
+> Team CreateTeam (string name = null, Collection<string> leaderIds = null, Collection<string> userIds = null)
 
 Creating a team
 
@@ -20,7 +21,7 @@ This method creates a new team. In case of success it renders the created tag, o
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -30,12 +31,14 @@ namespace Example
 {
     public class CreateTeamExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TeamsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TeamsApi(config);
             var name = name_example;  // string | Team name. (optional) 
-            var leaderIds = new List<string>(); // List<string> | List of user id as leaders (optional) 
-            var userIds = new List<string>(); // List<string> | List of user id as team members. (optional) 
+            var leaderIds = new Collection<string>(); // Collection<string> | List of user id as leaders (optional) 
+            var userIds = new Collection<string>(); // Collection<string> | List of user id as team members. (optional) 
 
             try
             {
@@ -43,9 +46,11 @@ namespace Example
                 Team result = apiInstance.CreateTeam(name, leaderIds, userIds);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TeamsApi.CreateTeam: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -57,8 +62,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Team name. | [optional] 
- **leaderIds** | [**List&lt;string&gt;**](string.md)| List of user id as leaders | [optional] 
- **userIds** | [**List&lt;string&gt;**](string.md)| List of user id as team members. | [optional] 
+ **leaderIds** | [**Collection&lt;string&gt;**](string.md)| List of user id as leaders | [optional] 
+ **userIds** | [**Collection&lt;string&gt;**](string.md)| List of user id as team members. | [optional] 
 
 ### Return type
 
@@ -73,7 +78,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deleteteam"></a>
 # **DeleteTeam**
 > Team DeleteTeam (string teamId, string takeOverCategoryId = null)
@@ -84,7 +95,7 @@ This method destroys an existing team. It renders the team itself. It renders a 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -94,9 +105,11 @@ namespace Example
 {
     public class DeleteTeamExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TeamsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TeamsApi(config);
             var teamId = teamId_example;  // string | 
             var takeOverCategoryId = takeOverCategoryId_example;  // string | ID of a category to recategorize (optional). (optional) 
 
@@ -106,9 +119,11 @@ namespace Example
                 Team result = apiInstance.DeleteTeam(teamId, takeOverCategoryId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TeamsApi.DeleteTeam: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -135,7 +150,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallteams"></a>
 # **GetAllTeams**
 > GetAllTeamsResponse GetAllTeams (int? offset = null, int? limit = null)
@@ -146,7 +167,7 @@ This method renders teams ordered by creation date (ascending).
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -156,9 +177,11 @@ namespace Example
 {
     public class GetAllTeamsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TeamsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TeamsApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -168,9 +191,11 @@ namespace Example
                 GetAllTeamsResponse result = apiInstance.GetAllTeams(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TeamsApi.GetAllTeams: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -197,7 +222,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getteam"></a>
 # **GetTeam**
 > Team GetTeam (string teamId)
@@ -208,7 +239,7 @@ This method renders a team from given id.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -218,9 +249,11 @@ namespace Example
 {
     public class GetTeamExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TeamsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TeamsApi(config);
             var teamId = teamId_example;  // string | 
 
             try
@@ -229,9 +262,11 @@ namespace Example
                 Team result = apiInstance.GetTeam(teamId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TeamsApi.GetTeam: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -257,10 +292,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updateteam"></a>
 # **UpdateTeam**
-> Team UpdateTeam (string teamId, string name = null, List<string> leaderIds = null, List<string> userIds = null)
+> Team UpdateTeam (string teamId, string name = null, Collection<string> leaderIds = null, Collection<string> userIds = null)
 
 Updating a team
 
@@ -268,7 +309,7 @@ This method updates an existing team from given attributes and renders it in cas
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -278,13 +319,15 @@ namespace Example
 {
     public class UpdateTeamExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TeamsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TeamsApi(config);
             var teamId = teamId_example;  // string | 
             var name = name_example;  // string | Team name. (optional) 
-            var leaderIds = new List<string>(); // List<string> | List of user id as leaders (optional) 
-            var userIds = new List<string>(); // List<string> | List of user id as team members. (optional) 
+            var leaderIds = new Collection<string>(); // Collection<string> | List of user id as leaders (optional) 
+            var userIds = new Collection<string>(); // Collection<string> | List of user id as team members. (optional) 
 
             try
             {
@@ -292,9 +335,11 @@ namespace Example
                 Team result = apiInstance.UpdateTeam(teamId, name, leaderIds, userIds);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TeamsApi.UpdateTeam: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -307,8 +352,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **teamId** | **string**|  | 
  **name** | **string**| Team name. | [optional] 
- **leaderIds** | [**List&lt;string&gt;**](string.md)| List of user id as leaders | [optional] 
- **userIds** | [**List&lt;string&gt;**](string.md)| List of user id as team members. | [optional] 
+ **leaderIds** | [**Collection&lt;string&gt;**](string.md)| List of user id as leaders | [optional] 
+ **userIds** | [**Collection&lt;string&gt;**](string.md)| List of user id as team members. | [optional] 
 
 ### Return type
 
@@ -323,4 +368,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

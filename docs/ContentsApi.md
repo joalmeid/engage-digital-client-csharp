@@ -10,9 +10,10 @@ Method | HTTP request | Description
 [**GetContent**](ContentsApi.md#getcontent) | **GET** /contents/{contentId} | Getting a content from its id
 [**IgnoreContent**](ContentsApi.md#ignorecontent) | **PUT** /contents/{contentId}/ignore | Ignoring a content
 
+
 <a name="categorizecontent"></a>
 # **CategorizeContent**
-> Content CategorizeContent (string contentId, List<string> categoryIds)
+> Content CategorizeContent (string contentId, Collection<string> categoryIds)
 
 Categorizing a content
 
@@ -20,7 +21,7 @@ This method updates the categories of a content. If token’s user does not have
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -30,11 +31,13 @@ namespace Example
 {
     public class CategorizeContentExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ContentsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ContentsApi(config);
             var contentId = contentId_example;  // string | 
-            var categoryIds = new List<string>(); // List<string> | An array containing the new categories to set on the content.
+            var categoryIds = new Collection<string>(); // Collection<string> | An array containing the new categories to set on the content.
 
             try
             {
@@ -42,9 +45,11 @@ namespace Example
                 Content result = apiInstance.CategorizeContent(contentId, categoryIds);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ContentsApi.CategorizeContent: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -56,7 +61,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentId** | **string**|  | 
- **categoryIds** | [**List&lt;string&gt;**](string.md)| An array containing the new categories to set on the content. | 
+ **categoryIds** | [**Collection&lt;string&gt;**](string.md)| An array containing the new categories to set on the content. | 
 
 ### Return type
 
@@ -71,10 +76,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="createcontent"></a>
 # **CreateContent**
-> Content CreateContent (string body, string authorId = null, string inReplyToId = null, int? _private = null, string sourceId = null, List<string> attachmentIds = null, string title = null, List<string> to = null, List<string> cc = null, List<string> bcc = null)
+> Content CreateContent (string body, string authorId = null, string inReplyToId = null, int? _private = null, string sourceId = null, Collection<string> attachmentIds = null, string title = null, Collection<string> to = null, Collection<string> cc = null, Collection<string> bcc = null)
 
 Creating a content
 
@@ -82,7 +93,7 @@ This method allows you to create an new content. It can be a reply to another co
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -92,19 +103,21 @@ namespace Example
 {
     public class CreateContentExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ContentsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ContentsApi(config);
             var body = body_example;  // string | The content’s body. This parameter is mandatory.
             var authorId = authorId_example;  // string | The identity id of content. This parameter is not mandatory, by default it use the token’s user first identity on source. (optional) 
             var inReplyToId = inReplyToId_example;  // string | The content’s id you want to reply to. If omitted, a new discussion will be created. If source does not support to initiate discussion this parameter is mandatory. (optional) 
             var _private = 56;  // int? | Created contents are public by default, set this parameter to \"1\" in order to create a private reply. It is NOT supported on every source. (optional) 
             var sourceId = sourceId_example;  // string | The source to create content to. If you specify `in_reply_to_id` parameter, source will be determined from it. Otherwise, this parameter is mandatory. (optional) 
-            var attachmentIds = new List<string>(); // List<string> | An array containing the attachments’ ids that need to be attached to this content. (optional) 
+            var attachmentIds = new Collection<string>(); // Collection<string> | An array containing the attachments’ ids that need to be attached to this content. (optional) 
             var title = title_example;  // string | For an email source. The subject of the email. This parameter is mandatory when initiating a discussion. (optional) 
-            var to = new List<string>(); // List<string> | For an email or SMS source. For an email, an array containing the email addresses used in the “To” section of the email. This parameter is mandatory when initiating a discussion. For a SMS, the number the SMS will be sent to. It must start with 00 or +, example: +33634231224 or 0033634231224. This parameter is mandatory when initiating a discussion. (optional) 
-            var cc = new List<string>(); // List<string> | For an email source. An array containing the email addresses used in the “Cc” section of the email. (optional) 
-            var bcc = new List<string>(); // List<string> | For an email source. An array containing the email addresses used in the “Bcc” section of the email. (optional) 
+            var to = new Collection<string>(); // Collection<string> | For an email or SMS source. For an email, an array containing the email addresses used in the “To” section of the email. This parameter is mandatory when initiating a discussion. For a SMS, the number the SMS will be sent to. It must start with 00 or +, example: +33634231224 or 0033634231224. This parameter is mandatory when initiating a discussion. (optional) 
+            var cc = new Collection<string>(); // Collection<string> | For an email source. An array containing the email addresses used in the “Cc” section of the email. (optional) 
+            var bcc = new Collection<string>(); // Collection<string> | For an email source. An array containing the email addresses used in the “Bcc” section of the email. (optional) 
 
             try
             {
@@ -112,9 +125,11 @@ namespace Example
                 Content result = apiInstance.CreateContent(body, authorId, inReplyToId, _private, sourceId, attachmentIds, title, to, cc, bcc);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ContentsApi.CreateContent: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -130,11 +145,11 @@ Name | Type | Description  | Notes
  **inReplyToId** | **string**| The content’s id you want to reply to. If omitted, a new discussion will be created. If source does not support to initiate discussion this parameter is mandatory. | [optional] 
  **_private** | **int?**| Created contents are public by default, set this parameter to \&quot;1\&quot; in order to create a private reply. It is NOT supported on every source. | [optional] 
  **sourceId** | **string**| The source to create content to. If you specify &#x60;in_reply_to_id&#x60; parameter, source will be determined from it. Otherwise, this parameter is mandatory. | [optional] 
- **attachmentIds** | [**List&lt;string&gt;**](string.md)| An array containing the attachments’ ids that need to be attached to this content. | [optional] 
+ **attachmentIds** | [**Collection&lt;string&gt;**](string.md)| An array containing the attachments’ ids that need to be attached to this content. | [optional] 
  **title** | **string**| For an email source. The subject of the email. This parameter is mandatory when initiating a discussion. | [optional] 
- **to** | [**List&lt;string&gt;**](string.md)| For an email or SMS source. For an email, an array containing the email addresses used in the “To” section of the email. This parameter is mandatory when initiating a discussion. For a SMS, the number the SMS will be sent to. It must start with 00 or +, example: +33634231224 or 0033634231224. This parameter is mandatory when initiating a discussion. | [optional] 
- **cc** | [**List&lt;string&gt;**](string.md)| For an email source. An array containing the email addresses used in the “Cc” section of the email. | [optional] 
- **bcc** | [**List&lt;string&gt;**](string.md)| For an email source. An array containing the email addresses used in the “Bcc” section of the email. | [optional] 
+ **to** | [**Collection&lt;string&gt;**](string.md)| For an email or SMS source. For an email, an array containing the email addresses used in the “To” section of the email. This parameter is mandatory when initiating a discussion. For a SMS, the number the SMS will be sent to. It must start with 00 or +, example: +33634231224 or 0033634231224. This parameter is mandatory when initiating a discussion. | [optional] 
+ **cc** | [**Collection&lt;string&gt;**](string.md)| For an email source. An array containing the email addresses used in the “Cc” section of the email. | [optional] 
+ **bcc** | [**Collection&lt;string&gt;**](string.md)| For an email source. An array containing the email addresses used in the “Bcc” section of the email. | [optional] 
 
 ### Return type
 
@@ -149,7 +164,14 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **422** | Unprocessable Entity |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallcontents"></a>
 # **GetAllContents**
 > GetAllContentsResponse GetAllContents (string q = null, int? offset = null, int? limit = null)
@@ -160,7 +182,7 @@ This method renders contents ordered by creation date (descending). Only content
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -170,9 +192,11 @@ namespace Example
 {
     public class GetAllContentsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ContentsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ContentsApi(config);
             var q = q_example;  // string | To filter contents on given query. Query works exactly like threads query but only have those keywords: intervention,identity, identity_group, source, status_in, thread or text. Order can be created_at.desc (default) or created_at.asc. e.g. q=intervention:\"7f946431b6eebffafae642cc\"%20source:\"d19c81948c137d86dac77216\" Please refer to ​Search & filtering parameters​ for more details. (optional) 
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
@@ -183,9 +207,11 @@ namespace Example
                 GetAllContentsResponse result = apiInstance.GetAllContents(q, offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ContentsApi.GetAllContents: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -213,7 +239,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getcontent"></a>
 # **GetContent**
 > Content GetContent (string contentId)
@@ -224,7 +256,7 @@ This method renders a content from given id. If token’s user does not have “
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -234,9 +266,11 @@ namespace Example
 {
     public class GetContentExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ContentsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ContentsApi(config);
             var contentId = contentId_example;  // string | 
 
             try
@@ -245,9 +279,11 @@ namespace Example
                 Content result = apiInstance.GetContent(contentId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ContentsApi.GetContent: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -273,7 +309,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="ignorecontent"></a>
 # **IgnoreContent**
 > Content IgnoreContent (string contentId)
@@ -284,7 +326,7 @@ Ignores a content. If token’s user does not have “read” on content’s sou
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -294,9 +336,11 @@ namespace Example
 {
     public class IgnoreContentExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ContentsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ContentsApi(config);
             var contentId = contentId_example;  // string | 
 
             try
@@ -305,9 +349,11 @@ namespace Example
                 Content result = apiInstance.IgnoreContent(contentId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ContentsApi.IgnoreContent: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -333,4 +379,11 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **404** | Not Found |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

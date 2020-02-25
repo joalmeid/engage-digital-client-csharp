@@ -3,21 +3,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AcceptedAt** | **DateTimeOffset?** |  | [optional] 
-**AgentIds** | **List&lt;string&gt;** |  | [optional] 
+**AcceptedAt** | **DateTime** |  | [optional] 
+**AgentIds** | **Collection&lt;string&gt;** |  | [optional] 
 **ChannelId** | **string** |  | [optional] 
-**CompletedAt** | **DateTimeOffset?** |  | [optional] 
+**CompletedAt** | **DateTime** |  | [optional] 
 **ContentId** | **string** |  | [optional] 
-**CreatedAt** | **DateTimeOffset?** |  | [optional] 
-**ExpireAt** | **DateTimeOffset?** |  | [optional] 
+**CreatedAt** | **DateTime** |  | [optional] 
+**ExpireAt** | **DateTime** |  | [optional] 
 **Id** | **string** |  | 
 **InterventionId** | **string** |  | [optional] 
-**LockedAt** | **DateTimeOffset?** |  | [optional] 
-**Priority** | **int?** |  | [optional] 
+**LockedAt** | **DateTime** |  | [optional] 
+**Priority** | **int** |  | [optional] 
 **Step** | **string** |  | [optional] 
 **ThreadId** | **string** |  | [optional] 
-**TransferedAt** | **DateTimeOffset?** |  | [optional] 
-**UpdatedAt** | **DateTimeOffset?** |  | [optional] 
+**TransferedAt** | **DateTime** |  | [optional] 
+**UpdatedAt** | **DateTime** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

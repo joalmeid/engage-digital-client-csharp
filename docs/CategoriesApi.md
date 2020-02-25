@@ -10,9 +10,10 @@ Method | HTTP request | Description
 [**GetCategory**](CategoriesApi.md#getcategory) | **GET** /categories/{categoryId} | Getting a category from its id
 [**UpdateCategory**](CategoriesApi.md#updatecategory) | **PUT** /categories/{categoryId} | Updating a category
 
+
 <a name="createcategory"></a>
 # **CreateCategory**
-> Category CreateCategory (string name = null, string parentId = null, int? color = null, bool? mandatory = null, bool? multiple = null, bool? postQualification = null, bool? unselectable = null, List<string> sourceIds = null)
+> Category CreateCategory (string name = null, string parentId = null, int? color = null, bool? mandatory = null, bool? multiple = null, bool? postQualification = null, bool? unselectable = null, Collection<string> sourceIds = null)
 
 Creating a category
 
@@ -20,7 +21,7 @@ This method creates a new team. In case of success it renders the created tag, o
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -30,9 +31,11 @@ namespace Example
 {
     public class CreateCategoryExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new CategoriesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new CategoriesApi(config);
             var name = name_example;  // string | Category name. (optional) 
             var parentId = parentId_example;  // string | ID of parent category. (optional) 
             var color = 56;  // int? | displayed color for the category, see Category colors.  (optional) 
@@ -40,7 +43,7 @@ namespace Example
             var multiple = true;  // bool? | allow to assign multiple child categories (Boolean). (optional) 
             var postQualification = true;  // bool? | post qualification (Boolean). (optional) 
             var unselectable = true;  // bool? | root category is unselectable (Boolean). (optional) 
-            var sourceIds = new List<string>(); // List<string> | List of source id. (optional) 
+            var sourceIds = new Collection<string>(); // Collection<string> | List of source id. (optional) 
 
             try
             {
@@ -48,9 +51,11 @@ namespace Example
                 Category result = apiInstance.CreateCategory(name, parentId, color, mandatory, multiple, postQualification, unselectable, sourceIds);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling CategoriesApi.CreateCategory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -68,7 +73,7 @@ Name | Type | Description  | Notes
  **multiple** | **bool?**| allow to assign multiple child categories (Boolean). | [optional] 
  **postQualification** | **bool?**| post qualification (Boolean). | [optional] 
  **unselectable** | **bool?**| root category is unselectable (Boolean). | [optional] 
- **sourceIds** | [**List&lt;string&gt;**](string.md)| List of source id. | [optional] 
+ **sourceIds** | [**Collection&lt;string&gt;**](string.md)| List of source id. | [optional] 
 
 ### Return type
 
@@ -83,7 +88,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletecategory"></a>
 # **DeleteCategory**
 > Category DeleteCategory (string categoryId, string takeOverCategoryId = null)
@@ -94,7 +105,7 @@ This method destroys an existing category. It renders the category itself. It re
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -104,9 +115,11 @@ namespace Example
 {
     public class DeleteCategoryExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new CategoriesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new CategoriesApi(config);
             var categoryId = categoryId_example;  // string | 
             var takeOverCategoryId = takeOverCategoryId_example;  // string | ID of a category to recategorize (optional). (optional) 
 
@@ -116,9 +129,11 @@ namespace Example
                 Category result = apiInstance.DeleteCategory(categoryId, takeOverCategoryId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling CategoriesApi.DeleteCategory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -145,7 +160,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallcategories"></a>
 # **GetAllCategories**
 > GetAllCategoriesResponse GetAllCategories (string parentId = null, int? offset = null, int? limit = null)
@@ -156,7 +177,7 @@ This method renders categories ordered by creation date (ascending).
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -166,9 +187,11 @@ namespace Example
 {
     public class GetAllCategoriesExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new CategoriesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new CategoriesApi(config);
             var parentId = parentId_example;  // string | To filter categories on given category parent id. (optional) 
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
@@ -179,9 +202,11 @@ namespace Example
                 GetAllCategoriesResponse result = apiInstance.GetAllCategories(parentId, offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling CategoriesApi.GetAllCategories: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -209,7 +234,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getcategory"></a>
 # **GetCategory**
 > Category GetCategory (string categoryId)
@@ -220,7 +251,7 @@ This method renders a category from given id.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -230,9 +261,11 @@ namespace Example
 {
     public class GetCategoryExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new CategoriesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new CategoriesApi(config);
             var categoryId = categoryId_example;  // string | 
 
             try
@@ -241,9 +274,11 @@ namespace Example
                 Category result = apiInstance.GetCategory(categoryId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling CategoriesApi.GetCategory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -269,10 +304,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatecategory"></a>
 # **UpdateCategory**
-> Category UpdateCategory (string categoryId, string name = null, string parentId = null, int? color = null, bool? mandatory = null, bool? multiple = null, bool? postQualification = null, bool? unselectable = null, List<string> sourceIds = null)
+> Category UpdateCategory (string categoryId, string name = null, string parentId = null, int? color = null, bool? mandatory = null, bool? multiple = null, bool? postQualification = null, bool? unselectable = null, Collection<string> sourceIds = null)
 
 Updating a category
 
@@ -280,7 +321,7 @@ This method creates a new team. In case of success it renders the created tag, o
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -290,9 +331,11 @@ namespace Example
 {
     public class UpdateCategoryExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new CategoriesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new CategoriesApi(config);
             var categoryId = categoryId_example;  // string | 
             var name = name_example;  // string | Category name. (optional) 
             var parentId = parentId_example;  // string | ID of parent category. (optional) 
@@ -301,7 +344,7 @@ namespace Example
             var multiple = true;  // bool? | allow to assign multiple child categories (Boolean). (optional) 
             var postQualification = true;  // bool? | post qualification (Boolean). (optional) 
             var unselectable = true;  // bool? | root category is unselectable (Boolean). (optional) 
-            var sourceIds = new List<string>(); // List<string> | List of source id. (optional) 
+            var sourceIds = new Collection<string>(); // Collection<string> | List of source id. (optional) 
 
             try
             {
@@ -309,9 +352,11 @@ namespace Example
                 Category result = apiInstance.UpdateCategory(categoryId, name, parentId, color, mandatory, multiple, postQualification, unselectable, sourceIds);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling CategoriesApi.UpdateCategory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -330,7 +375,7 @@ Name | Type | Description  | Notes
  **multiple** | **bool?**| allow to assign multiple child categories (Boolean). | [optional] 
  **postQualification** | **bool?**| post qualification (Boolean). | [optional] 
  **unselectable** | **bool?**| root category is unselectable (Boolean). | [optional] 
- **sourceIds** | [**List&lt;string&gt;**](string.md)| List of source id. | [optional] 
+ **sourceIds** | [**Collection&lt;string&gt;**](string.md)| List of source id. | [optional] 
 
 ### Return type
 
@@ -345,4 +390,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

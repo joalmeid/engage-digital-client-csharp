@@ -10,9 +10,10 @@ Method | HTTP request | Description
 [**GetTimeSheet**](TimeSheetsApi.md#gettimesheet) | **GET** /time_sheets/{timeSheetId} | Getting a time sheet from its id
 [**UpdateTimeSheet**](TimeSheetsApi.md#updatetimesheet) | **PUT** /time_sheets/{timeSheetId} | Updating a time sheet
 
+
 <a name="createtimesheet"></a>
 # **CreateTimeSheet**
-> TimeSheet CreateTimeSheet (string label, bool? active = null, List<string> sourceIds = null, string holidaysRegion = null, string holidays = null, string mondayHours = null, string tuesdayHours = null, string wednesdayHours = null, string thursdayHours = null, string fridayHours = null, string saturdayHours = null, string sundayHours = null)
+> TimeSheet CreateTimeSheet (string label, bool? active = null, Collection<string> sourceIds = null, string holidaysRegion = null, string holidays = null, string mondayHours = null, string tuesdayHours = null, string wednesdayHours = null, string thursdayHours = null, string fridayHours = null, string saturdayHours = null, string sundayHours = null)
 
 Creating a time sheet
 
@@ -20,7 +21,7 @@ This method creates a time sheet. In case of success it renders the time sheet, 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -30,12 +31,14 @@ namespace Example
 {
     public class CreateTimeSheetExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TimeSheetsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TimeSheetsApi(config);
             var label = label_example;  // string | The label of the time sheet.
             var active = true;  // bool? | true or false, this field is used to enable/disable a time sheet. (optional) 
-            var sourceIds = new List<string>(); // List<string> | An array containing id of each source using your time sheet. (optional) 
+            var sourceIds = new Collection<string>(); // Collection<string> | An array containing id of each source using your time sheet. (optional) 
             var holidaysRegion = holidaysRegion_example;  // string | A string containing the first two letters of your country (example: \"fr\"/\"en\"/\"es\"), useful to bootstrap default holidays following to a country. (optional) 
             var holidays = holidays_example;  // string | An array containing one or more hash of holidays, a holiday must contain a name (string) and a date (string), the date must be in a valid format, a valid format is a format corresponding to your domain’s locale). (optional) 
             var mondayHours = mondayHours_example;  // string | this field define the time intervals of the day (in secs). An empty string means that there are no business hours on this day. For example: “a-b,c-d”: “a” is the beginning of the first interval of the day, “b” is the ending of the first interval of the day, “c” is the beginning of the second interval of the day, “d” is the ending of the second interval of the day (optional) 
@@ -52,9 +55,11 @@ namespace Example
                 TimeSheet result = apiInstance.CreateTimeSheet(label, active, sourceIds, holidaysRegion, holidays, mondayHours, tuesdayHours, wednesdayHours, thursdayHours, fridayHours, saturdayHours, sundayHours);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TimeSheetsApi.CreateTimeSheet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -67,7 +72,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **label** | **string**| The label of the time sheet. | 
  **active** | **bool?**| true or false, this field is used to enable/disable a time sheet. | [optional] 
- **sourceIds** | [**List&lt;string&gt;**](string.md)| An array containing id of each source using your time sheet. | [optional] 
+ **sourceIds** | [**Collection&lt;string&gt;**](string.md)| An array containing id of each source using your time sheet. | [optional] 
  **holidaysRegion** | **string**| A string containing the first two letters of your country (example: \&quot;fr\&quot;/\&quot;en\&quot;/\&quot;es\&quot;), useful to bootstrap default holidays following to a country. | [optional] 
  **holidays** | **string**| An array containing one or more hash of holidays, a holiday must contain a name (string) and a date (string), the date must be in a valid format, a valid format is a format corresponding to your domain’s locale). | [optional] 
  **mondayHours** | **string**| this field define the time intervals of the day (in secs). An empty string means that there are no business hours on this day. For example: “a-b,c-d”: “a” is the beginning of the first interval of the day, “b” is the ending of the first interval of the day, “c” is the beginning of the second interval of the day, “d” is the ending of the second interval of the day | [optional] 
@@ -91,7 +96,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletetimesheet"></a>
 # **DeleteTimeSheet**
 > TimeSheet DeleteTimeSheet (string timeSheetId)
@@ -102,7 +113,7 @@ This method destroys an existing time sheet. It renders time sheet itself. It re
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -112,9 +123,11 @@ namespace Example
 {
     public class DeleteTimeSheetExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TimeSheetsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TimeSheetsApi(config);
             var timeSheetId = timeSheetId_example;  // string | 
 
             try
@@ -123,9 +136,11 @@ namespace Example
                 TimeSheet result = apiInstance.DeleteTimeSheet(timeSheetId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TimeSheetsApi.DeleteTimeSheet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -151,7 +166,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getalltimesheets"></a>
 # **GetAllTimeSheets**
 > GetAllTimeSheetsResponse GetAllTimeSheets (int? offset = null, int? limit = null)
@@ -162,7 +183,7 @@ This method renders time sheets ordered by active and label.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -172,9 +193,11 @@ namespace Example
 {
     public class GetAllTimeSheetsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TimeSheetsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TimeSheetsApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -184,9 +207,11 @@ namespace Example
                 GetAllTimeSheetsResponse result = apiInstance.GetAllTimeSheets(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TimeSheetsApi.GetAllTimeSheets: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -213,7 +238,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gettimesheet"></a>
 # **GetTimeSheet**
 > TimeSheet GetTimeSheet (string timeSheetId)
@@ -224,7 +255,7 @@ This method renders a time sheet from given id.  Authorization​: only users th
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -234,9 +265,11 @@ namespace Example
 {
     public class GetTimeSheetExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TimeSheetsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TimeSheetsApi(config);
             var timeSheetId = timeSheetId_example;  // string | 
 
             try
@@ -245,9 +278,11 @@ namespace Example
                 TimeSheet result = apiInstance.GetTimeSheet(timeSheetId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TimeSheetsApi.GetTimeSheet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -273,10 +308,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatetimesheet"></a>
 # **UpdateTimeSheet**
-> TimeSheet UpdateTimeSheet (string timeSheetId, bool? active = null, string label = null, List<string> sourceIds = null, string holidays = null, string mondayHours = null, string tuesdayHours = null, string wednesdayHours = null, string thursdayHours = null, string fridayHours = null, string saturdayHours = null, string sundayHours = null)
+> TimeSheet UpdateTimeSheet (string timeSheetId, bool? active = null, string label = null, Collection<string> sourceIds = null, string holidays = null, string mondayHours = null, string tuesdayHours = null, string wednesdayHours = null, string thursdayHours = null, string fridayHours = null, string saturdayHours = null, string sundayHours = null)
 
 Updating a time sheet
 
@@ -284,7 +325,7 @@ This method updates an existing team from given attributes and renders it in cas
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -294,13 +335,15 @@ namespace Example
 {
     public class UpdateTimeSheetExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TimeSheetsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TimeSheetsApi(config);
             var timeSheetId = timeSheetId_example;  // string | 
             var active = true;  // bool? | true or false, this field is used to enable/disable a time sheet. (optional) 
             var label = label_example;  // string | The label of the time sheet. (optional) 
-            var sourceIds = new List<string>(); // List<string> | An array containing id of each source using your time sheet. (optional) 
+            var sourceIds = new Collection<string>(); // Collection<string> | An array containing id of each source using your time sheet. (optional) 
             var holidays = holidays_example;  // string | An array containing one or more hash of holidays, a holiday must contain a name (string) and a date (string), the date must be in a valid format, a valid format is a format corresponding to your domain’s locale). (optional) 
             var mondayHours = mondayHours_example;  // string | this field define the time intervals of the day (in secs). An empty string means that there are no business hours on this day. For example: “a-b,c-d”: “a” is the beginning of the first interval of the day, “b” is the ending of the first interval of the day, “c” is the beginning of the second interval of the day, “d” is the ending of the second interval of the day (optional) 
             var tuesdayHours = tuesdayHours_example;  // string | this field define the time intervals of the day (in secs). An empty string means that there are no business hours on this day. See `monday_hours` for the format. (optional) 
@@ -316,9 +359,11 @@ namespace Example
                 TimeSheet result = apiInstance.UpdateTimeSheet(timeSheetId, active, label, sourceIds, holidays, mondayHours, tuesdayHours, wednesdayHours, thursdayHours, fridayHours, saturdayHours, sundayHours);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TimeSheetsApi.UpdateTimeSheet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -332,7 +377,7 @@ Name | Type | Description  | Notes
  **timeSheetId** | **string**|  | 
  **active** | **bool?**| true or false, this field is used to enable/disable a time sheet. | [optional] 
  **label** | **string**| The label of the time sheet. | [optional] 
- **sourceIds** | [**List&lt;string&gt;**](string.md)| An array containing id of each source using your time sheet. | [optional] 
+ **sourceIds** | [**Collection&lt;string&gt;**](string.md)| An array containing id of each source using your time sheet. | [optional] 
  **holidays** | **string**| An array containing one or more hash of holidays, a holiday must contain a name (string) and a date (string), the date must be in a valid format, a valid format is a format corresponding to your domain’s locale). | [optional] 
  **mondayHours** | **string**| this field define the time intervals of the day (in secs). An empty string means that there are no business hours on this day. For example: “a-b,c-d”: “a” is the beginning of the first interval of the day, “b” is the ending of the first interval of the day, “c” is the beginning of the second interval of the day, “d” is the ending of the second interval of the day | [optional] 
  **tuesdayHours** | **string**| this field define the time intervals of the day (in secs). An empty string means that there are no business hours on this day. See &#x60;monday_hours&#x60; for the format. | [optional] 
@@ -355,4 +400,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

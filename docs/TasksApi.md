@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**MoveTask**](TasksApi.md#movetask) | **DELETE** /tasks/{taskId}/move | Move a task to another queue
 [**TransferTask**](TasksApi.md#transfertask) | **PUT** /tasks/{taskId}/transfer | Transferring a task
 
+
 <a name="getalltasks"></a>
 # **GetAllTasks**
 > GetAllTasksResponse GetAllTasks (string queue = null, string channelId = null, string step = null, int? offset = null, int? limit = null)
@@ -19,7 +20,7 @@ This method renders tasks ordered by priority (highest first) and then by creati
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -29,9 +30,11 @@ namespace Example
 {
     public class GetAllTasksExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TasksApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TasksApi(config);
             var queue = queue_example;  // string | To filter tasks on given queue name (filters on the “global” queue by default).The most commonly used queues are: “global” (contains every task pending assignation), “workbin_{agent_id}” (contains every tasks assigned to the {agent_id} agent, “history” (contains every processed tasks), and “undelivered” (contains every undelivered tasks). If queue is set to “workbins” all the tasks currently in a workbin will be returned. (optional) 
             var channelId = channelId_example;  // string | To filter tasks on given channel id. (optional) 
             var step = step_example;  // string | To filter tasks on the step they’re currently in. (optional) 
@@ -44,9 +47,11 @@ namespace Example
                 GetAllTasksResponse result = apiInstance.GetAllTasks(queue, channelId, step, offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TasksApi.GetAllTasks: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -76,7 +81,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gettask"></a>
 # **GetTask**
 > Task GetTask (string taskId)
@@ -87,7 +98,7 @@ This method renders a task from given id.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -97,9 +108,11 @@ namespace Example
 {
     public class GetTaskExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TasksApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TasksApi(config);
             var taskId = taskId_example;  // string | 
 
             try
@@ -108,9 +121,11 @@ namespace Example
                 Task result = apiInstance.GetTask(taskId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TasksApi.GetTask: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -136,7 +151,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="movetask"></a>
 # **MoveTask**
 > Task MoveTask (string taskId, string queue)
@@ -147,7 +168,7 @@ This method changes a task queue and renders it in case of success. Only accepts
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -157,9 +178,11 @@ namespace Example
 {
     public class MoveTaskExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TasksApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TasksApi(config);
             var taskId = taskId_example;  // string | 
             var queue = queue_example;  // string | Name of the queue task has to be moved in.
 
@@ -169,9 +192,11 @@ namespace Example
                 Task result = apiInstance.MoveTask(taskId, queue);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TasksApi.MoveTask: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -198,10 +223,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="transfertask"></a>
 # **TransferTask**
-> Task TransferTask (string taskId, List<string> agentIds = null, string bypass = null, List<string> categoryIds = null, string language = null, List<string> teamIds = null, string comment = null)
+> Task TransferTask (string taskId, Collection<string> agentIds = null, string bypass = null, Collection<string> categoryIds = null, string language = null, Collection<string> teamIds = null, string comment = null)
 
 Transferring a task
 
@@ -209,7 +240,7 @@ This method transfers an existing task and renders it in case of success.  Autho
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -219,15 +250,17 @@ namespace Example
 {
     public class TransferTaskExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TasksApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TasksApi(config);
             var taskId = taskId_example;  // string | 
-            var agentIds = new List<string>(); // List<string> | List of agents to transfer the task to (multiple). (optional) 
+            var agentIds = new Collection<string>(); // Collection<string> | List of agents to transfer the task to (multiple). (optional) 
             var bypass = bypass_example;  // string | Force the transfer to the first agent in agent_ids if set. When bypass is used, (optional) 
-            var categoryIds = new List<string>(); // List<string> | Filter agents receiving the task depending on their categories. (optional) 
+            var categoryIds = new Collection<string>(); // Collection<string> | Filter agents receiving the task depending on their categories. (optional) 
             var language = language_example;  // string | Filter agents receiving the task depending on their spoken languages. (optional) 
-            var teamIds = new List<string>(); // List<string> | Filter agents receiving the task depending on their teams. (optional) 
+            var teamIds = new Collection<string>(); // Collection<string> | Filter agents receiving the task depending on their teams. (optional) 
             var comment = comment_example;  // string | Add a comment to the task. (optional) 
 
             try
@@ -236,9 +269,11 @@ namespace Example
                 Task result = apiInstance.TransferTask(taskId, agentIds, bypass, categoryIds, language, teamIds, comment);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TasksApi.TransferTask: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -250,11 +285,11 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taskId** | **string**|  | 
- **agentIds** | [**List&lt;string&gt;**](string.md)| List of agents to transfer the task to (multiple). | [optional] 
+ **agentIds** | [**Collection&lt;string&gt;**](string.md)| List of agents to transfer the task to (multiple). | [optional] 
  **bypass** | **string**| Force the transfer to the first agent in agent_ids if set. When bypass is used, | [optional] 
- **categoryIds** | [**List&lt;string&gt;**](string.md)| Filter agents receiving the task depending on their categories. | [optional] 
+ **categoryIds** | [**Collection&lt;string&gt;**](string.md)| Filter agents receiving the task depending on their categories. | [optional] 
  **language** | **string**| Filter agents receiving the task depending on their spoken languages. | [optional] 
- **teamIds** | [**List&lt;string&gt;**](string.md)| Filter agents receiving the task depending on their teams. | [optional] 
+ **teamIds** | [**Collection&lt;string&gt;**](string.md)| Filter agents receiving the task depending on their teams. | [optional] 
  **comment** | **string**| Add a comment to the task. | [optional] 
 
 ### Return type
@@ -270,4 +305,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

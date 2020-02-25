@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**GetThread**](ThreadsApi.md#getthread) | **GET** /content_threads/{threadId} | Getting a thread from its id
 [**OpenThread**](ThreadsApi.md#openthread) | **GET** /content_threads/{threadId}/open | Open a thread
 
+
 <a name="archivethread"></a>
 # **ArchiveThread**
 > Thread ArchiveThread (string threadId)
@@ -21,7 +22,7 @@ Archives the contents of a thread. If token’s user does not have “read” on
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -31,9 +32,11 @@ namespace Example
 {
     public class ArchiveThreadExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ThreadsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ThreadsApi(config);
             var threadId = threadId_example;  // string | 
 
             try
@@ -42,9 +45,11 @@ namespace Example
                 Thread result = apiInstance.ArchiveThread(threadId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ThreadsApi.ArchiveThread: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -70,10 +75,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="categorizethread"></a>
 # **CategorizeThread**
-> Thread CategorizeThread (string threadId, List<string> threadCategoryIds = null)
+> Thread CategorizeThread (string threadId, Collection<string> threadCategoryIds = null)
 
 Categorizing a thread
 
@@ -81,7 +92,7 @@ This method updates the categories of a thread. If token’s user does not have 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -91,11 +102,13 @@ namespace Example
 {
     public class CategorizeThreadExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ThreadsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ThreadsApi(config);
             var threadId = threadId_example;  // string | 
-            var threadCategoryIds = new List<string>(); // List<string> | An array containing the new categories to set on the thread. (optional) 
+            var threadCategoryIds = new Collection<string>(); // Collection<string> | An array containing the new categories to set on the thread. (optional) 
 
             try
             {
@@ -103,9 +116,11 @@ namespace Example
                 Thread result = apiInstance.CategorizeThread(threadId, threadCategoryIds);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ThreadsApi.CategorizeThread: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -117,7 +132,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **threadId** | **string**|  | 
- **threadCategoryIds** | [**List&lt;string&gt;**](string.md)| An array containing the new categories to set on the thread. | [optional] 
+ **threadCategoryIds** | [**Collection&lt;string&gt;**](string.md)| An array containing the new categories to set on the thread. | [optional] 
 
 ### Return type
 
@@ -132,7 +147,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="closethread"></a>
 # **CloseThread**
 > Thread CloseThread (string threadId)
@@ -143,7 +164,7 @@ Thread closure/opening is only available for the following sources: * Emails * A
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -153,9 +174,11 @@ namespace Example
 {
     public class CloseThreadExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ThreadsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ThreadsApi(config);
             var threadId = threadId_example;  // string | 
 
             try
@@ -164,9 +187,11 @@ namespace Example
                 Thread result = apiInstance.CloseThread(threadId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ThreadsApi.CloseThread: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -192,7 +217,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallthreads"></a>
 # **GetAllThreads**
 > GetAllThreadsResponse GetAllThreads (int? q = null, int? offset = null, int? limit = null)
@@ -203,7 +234,7 @@ This method renders threads ordered by last content date (descending). Only thre
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -213,9 +244,11 @@ namespace Example
 {
     public class GetAllThreadsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ThreadsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ThreadsApi(config);
             var q = 56;  // int? | A search query to filter threads. Please refer to ​Search & filtering parameters​ for more details. (optional) 
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
@@ -226,9 +259,11 @@ namespace Example
                 GetAllThreadsResponse result = apiInstance.GetAllThreads(q, offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ThreadsApi.GetAllThreads: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -256,7 +291,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getthread"></a>
 # **GetThread**
 > Thread GetThread (string threadId)
@@ -267,7 +308,7 @@ This method renders a thread from given id. If token’s user does not have “r
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -277,9 +318,11 @@ namespace Example
 {
     public class GetThreadExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ThreadsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ThreadsApi(config);
             var threadId = threadId_example;  // string | 
 
             try
@@ -288,9 +331,11 @@ namespace Example
                 Thread result = apiInstance.GetThread(threadId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ThreadsApi.GetThread: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -316,7 +361,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="openthread"></a>
 # **OpenThread**
 > Thread OpenThread (string threadId)
@@ -327,7 +378,7 @@ Thread closure/opening is only available for the following sources:  * Emails * 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -337,9 +388,11 @@ namespace Example
 {
     public class OpenThreadExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ThreadsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ThreadsApi(config);
             var threadId = threadId_example;  // string | 
 
             try
@@ -348,9 +401,11 @@ namespace Example
                 Thread result = apiInstance.OpenThread(threadId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ThreadsApi.OpenThread: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -376,4 +431,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

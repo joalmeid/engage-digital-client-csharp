@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**GetIntervention**](InterventionsApi.md#getintervention) | **GET** /interventions/{interventionId} | Getting an intervention from its id
 [**ReassignIntervention**](InterventionsApi.md#reassignintervention) | **PUT** /interventions/{interventionId}/reassign | Reassigning an intervention
 
+
 <a name="cancelintervention"></a>
 # **CancelIntervention**
 > Intervention CancelIntervention (string interventionId)
@@ -22,7 +23,7 @@ This method cancels (destroys) an intervention. It renders intervention itself. 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -32,9 +33,11 @@ namespace Example
 {
     public class CancelInterventionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new InterventionsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new InterventionsApi(config);
             var interventionId = interventionId_example;  // string | 
 
             try
@@ -43,9 +46,11 @@ namespace Example
                 Intervention result = apiInstance.CancelIntervention(interventionId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling InterventionsApi.CancelIntervention: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -71,10 +76,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="categorizeintervention"></a>
 # **CategorizeIntervention**
-> Intervention CategorizeIntervention (string interventionId, List<string> categoryIds)
+> Intervention CategorizeIntervention (string interventionId, Collection<string> categoryIds)
 
 Categorizing an intervention
 
@@ -82,7 +93,7 @@ This method updates the categories of an intervention. If token’s user does no
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -92,11 +103,13 @@ namespace Example
 {
     public class CategorizeInterventionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new InterventionsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new InterventionsApi(config);
             var interventionId = interventionId_example;  // string | 
-            var categoryIds = new List<string>(); // List<string> | 
+            var categoryIds = new Collection<string>(); // Collection<string> | 
 
             try
             {
@@ -104,9 +117,11 @@ namespace Example
                 Intervention result = apiInstance.CategorizeIntervention(interventionId, categoryIds);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling InterventionsApi.CategorizeIntervention: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -118,7 +133,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **interventionId** | **string**|  | 
- **categoryIds** | [**List&lt;string&gt;**](string.md)|  | 
+ **categoryIds** | [**Collection&lt;string&gt;**](string.md)|  | 
 
 ### Return type
 
@@ -133,7 +148,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="closeintervention"></a>
 # **CloseIntervention**
 > Intervention CloseIntervention (string interventionId)
@@ -144,7 +165,7 @@ This method closes an intervention. Caveats:  * If the intervention is already b
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -154,9 +175,11 @@ namespace Example
 {
     public class CloseInterventionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new InterventionsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new InterventionsApi(config);
             var interventionId = interventionId_example;  // string | 
 
             try
@@ -165,9 +188,11 @@ namespace Example
                 Intervention result = apiInstance.CloseIntervention(interventionId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling InterventionsApi.CloseIntervention: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -193,7 +218,14 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **409** | If the intervention is already being closed, it will return a 409 error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="createintervention"></a>
 # **CreateIntervention**
 > GetAllInterventionsResponse CreateIntervention (string contentId)
@@ -204,7 +236,7 @@ This method creates a new intervention or reopen it. In case of success it rende
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -214,9 +246,11 @@ namespace Example
 {
     public class CreateInterventionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new InterventionsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new InterventionsApi(config);
             var contentId = contentId_example;  // string | The content to create intervention on (mandatory).
 
             try
@@ -225,9 +259,11 @@ namespace Example
                 GetAllInterventionsResponse result = apiInstance.CreateIntervention(contentId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling InterventionsApi.CreateIntervention: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -253,10 +289,17 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **422** | Unprocessable Entity |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallinterventions"></a>
 # **GetAllInterventions**
-> GetAllInterventionsResponse GetAllInterventions (string threadId = null, string userId = null, string identityGroupId = null, List<string> identityId = null, string sort = null, int? offset = null, int? limit = null)
+> GetAllInterventionsResponse GetAllInterventions (string threadId = null, string userId = null, string identityGroupId = null, Collection<string> identityId = null, string sort = null, int? offset = null, int? limit = null)
 
 Getting all interventions
 
@@ -264,7 +307,7 @@ This method renders interventions ordered by creation date (descending). Only in
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -274,13 +317,15 @@ namespace Example
 {
     public class GetAllInterventionsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new InterventionsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new InterventionsApi(config);
             var threadId = threadId_example;  // string | To filter interventions on given thread id. (optional) 
             var userId = userId_example;  // string | To filter interventions on given user id. (optional) 
             var identityGroupId = identityGroupId_example;  // string | To filter interventions on given identity_group_id. This will return interventions associated to any identity in the indentity_group. (optional) 
-            var identityId = new List<string>(); // List<string> | To filter interventions on given identity_id(s). Can be a single value or an array. (optional) 
+            var identityId = new Collection<string>(); // Collection<string> | To filter interventions on given identity_id(s). Can be a single value or an array. (optional) 
             var sort = sort_example;  // string | To change the criteria chosen to sort the interventions. The value can be “created_at” or “updated_at”. (optional) 
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
@@ -291,9 +336,11 @@ namespace Example
                 GetAllInterventionsResponse result = apiInstance.GetAllInterventions(threadId, userId, identityGroupId, identityId, sort, offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling InterventionsApi.GetAllInterventions: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -307,7 +354,7 @@ Name | Type | Description  | Notes
  **threadId** | **string**| To filter interventions on given thread id. | [optional] 
  **userId** | **string**| To filter interventions on given user id. | [optional] 
  **identityGroupId** | **string**| To filter interventions on given identity_group_id. This will return interventions associated to any identity in the indentity_group. | [optional] 
- **identityId** | [**List&lt;string&gt;**](string.md)| To filter interventions on given identity_id(s). Can be a single value or an array. | [optional] 
+ **identityId** | [**Collection&lt;string&gt;**](string.md)| To filter interventions on given identity_id(s). Can be a single value or an array. | [optional] 
  **sort** | **string**| To change the criteria chosen to sort the interventions. The value can be “created_at” or “updated_at”. | [optional] 
  **offset** | **int?**| The record index to start. Default value is 0. | [optional] 
  **limit** | **int?**| The max number of records to return. Default value is 30, max value is 150. | [optional] 
@@ -325,7 +372,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getintervention"></a>
 # **GetIntervention**
 > Intervention GetIntervention (string interventionId)
@@ -336,7 +389,7 @@ This method renders an intervention from given id. If token’s user does not ha
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -346,9 +399,11 @@ namespace Example
 {
     public class GetInterventionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new InterventionsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new InterventionsApi(config);
             var interventionId = interventionId_example;  // string | 
 
             try
@@ -357,9 +412,11 @@ namespace Example
                 Intervention result = apiInstance.GetIntervention(interventionId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling InterventionsApi.GetIntervention: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -385,7 +442,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="reassignintervention"></a>
 # **ReassignIntervention**
 > Intervention ReassignIntervention (string interventionId, string userId)
@@ -396,7 +459,7 @@ This method updates the user in charge of the intervention  Authorization​: On
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -406,9 +469,11 @@ namespace Example
 {
     public class ReassignInterventionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new InterventionsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new InterventionsApi(config);
             var interventionId = interventionId_example;  // string | 
             var userId = userId_example;  // string | 
 
@@ -418,9 +483,11 @@ namespace Example
                 Intervention result = apiInstance.ReassignIntervention(interventionId, userId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling InterventionsApi.ReassignIntervention: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -447,4 +514,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

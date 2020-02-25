@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**GetAllSettings**](SettingsApi.md#getallsettings) | **GET** /settings | Getting all settings
 [**UpdateSettings**](SettingsApi.md#updatesettings) | **PUT** /settings | Updating settings
 
+
 <a name="getallsettings"></a>
 # **GetAllSettings**
 > Settings GetAllSettings ()
@@ -17,7 +18,7 @@ This method renders all settings of your domain.  Authorization​: only users t
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -27,9 +28,11 @@ namespace Example
 {
     public class GetAllSettingsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new SettingsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new SettingsApi(config);
 
             try
             {
@@ -37,9 +40,11 @@ namespace Example
                 Settings result = apiInstance.GetAllSettings();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling SettingsApi.GetAllSettings: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -62,10 +67,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatesettings"></a>
 # **UpdateSettings**
-> Settings UpdateSettings (int? activityPresenceThreshold = null, bool? activityTracking = null, string beginningOfWeek = null, bool? categoryTagging = null, string contentLanguages = null, bool? dashboard = null, bool? denyIframeIntegration = null, bool? disablePasswordAutocomplete = null, int? expirePasswordAfter = null, bool? expirePasswordEnabled = null, bool? exportInSeconds = null, bool? foldUselessContents = null, int? fteDuration = null, bool? identityMerge = null, List<int?> interventionDeferRates = null, int? interventionDeferThreshold = null, List<int?> interventionRates = null, string locale = null, bool? multiLang = null, string name = null, bool? passwordArchivableEnabled = null, int? passwordArchivableSize = null, int? passwordMinLength = null, bool? passwordNonWord = null, bool? passwordNumbers = null, bool? passwordRecoveryDisabled = null, bool? pushEnabled = null, bool? replyAsAnyIdentity = null, bool? rtlSupport = null, bool? selfApprovalRequired = null, int? sessionTimeout = null, bool? spellchecking = null, string style = null, bool? thirdPartyServicesDisabled = null, string timezone = null, bool? trackJs = null, string type = null, int? urgentTaskThreshold = null, bool? useSystemFont = null)
+> Settings UpdateSettings (int? activityPresenceThreshold = null, bool? activityTracking = null, string beginningOfWeek = null, bool? categoryTagging = null, string contentLanguages = null, bool? dashboard = null, bool? denyIframeIntegration = null, bool? disablePasswordAutocomplete = null, int? expirePasswordAfter = null, bool? expirePasswordEnabled = null, bool? exportInSeconds = null, bool? foldUselessContents = null, int? fteDuration = null, bool? identityMerge = null, Collection<int> interventionDeferRates = null, int? interventionDeferThreshold = null, Collection<int> interventionRates = null, string locale = null, bool? multiLang = null, string name = null, bool? passwordArchivableEnabled = null, int? passwordArchivableSize = null, int? passwordMinLength = null, bool? passwordNonWord = null, bool? passwordNumbers = null, bool? passwordRecoveryDisabled = null, bool? pushEnabled = null, bool? replyAsAnyIdentity = null, bool? rtlSupport = null, bool? selfApprovalRequired = null, int? sessionTimeout = null, bool? spellchecking = null, string style = null, bool? thirdPartyServicesDisabled = null, string timezone = null, bool? trackJs = null, string type = null, int? urgentTaskThreshold = null, bool? useSystemFont = null)
 
 Updating settings
 
@@ -73,7 +84,7 @@ This method updates the current domain settings.  Authorization​: only users t
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -83,9 +94,11 @@ namespace Example
 {
     public class UpdateSettingsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new SettingsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new SettingsApi(config);
             var activityPresenceThreshold = 56;  // int? | (in hours). (optional) 
             var activityTracking = true;  // bool? | ​Enable activity tracking (Boolean) (optional) 
             var beginningOfWeek = beginningOfWeek_example;  // string | (Day of week) (optional) 
@@ -100,9 +113,9 @@ namespace Example
             var foldUselessContents = true;  // bool? | fold archived contents (Boolean) (optional) 
             var fteDuration = 56;  // int? | FTE data period (in hours) (optional) 
             var identityMerge = true;  // bool? | enable identity merge (Boolean) (optional) 
-            var interventionDeferRates = new List<int?>(); // List<int?> | (Array of times in seconds) (optional) 
+            var interventionDeferRates = new Collection<int>(); // Collection<int> | (Array of times in seconds) (optional) 
             var interventionDeferThreshold = 56;  // int? | (in seconds) (optional) 
-            var interventionRates = new List<int?>(); // List<int?> | (Array of times in seconds) (optional) 
+            var interventionRates = new Collection<int>(); // Collection<int> | (Array of times in seconds) (optional) 
             var locale = locale_example;  // string | locale code (String) (optional) 
             var multiLang = true;  // bool? | activate multi language support for messages (Boolean) (optional) 
             var name = name_example;  // string | Name of the Dimelo Digital (String) (optional) 
@@ -132,9 +145,11 @@ namespace Example
                 Settings result = apiInstance.UpdateSettings(activityPresenceThreshold, activityTracking, beginningOfWeek, categoryTagging, contentLanguages, dashboard, denyIframeIntegration, disablePasswordAutocomplete, expirePasswordAfter, expirePasswordEnabled, exportInSeconds, foldUselessContents, fteDuration, identityMerge, interventionDeferRates, interventionDeferThreshold, interventionRates, locale, multiLang, name, passwordArchivableEnabled, passwordArchivableSize, passwordMinLength, passwordNonWord, passwordNumbers, passwordRecoveryDisabled, pushEnabled, replyAsAnyIdentity, rtlSupport, selfApprovalRequired, sessionTimeout, spellchecking, style, thirdPartyServicesDisabled, timezone, trackJs, type, urgentTaskThreshold, useSystemFont);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling SettingsApi.UpdateSettings: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -159,9 +174,9 @@ Name | Type | Description  | Notes
  **foldUselessContents** | **bool?**| fold archived contents (Boolean) | [optional] 
  **fteDuration** | **int?**| FTE data period (in hours) | [optional] 
  **identityMerge** | **bool?**| enable identity merge (Boolean) | [optional] 
- **interventionDeferRates** | [**List&lt;int?&gt;**](int?.md)| (Array of times in seconds) | [optional] 
+ **interventionDeferRates** | [**Collection&lt;int&gt;**](int.md)| (Array of times in seconds) | [optional] 
  **interventionDeferThreshold** | **int?**| (in seconds) | [optional] 
- **interventionRates** | [**List&lt;int?&gt;**](int?.md)| (Array of times in seconds) | [optional] 
+ **interventionRates** | [**Collection&lt;int&gt;**](int.md)| (Array of times in seconds) | [optional] 
  **locale** | **string**| locale code (String) | [optional] 
  **multiLang** | **bool?**| activate multi language support for messages (Boolean) | [optional] 
  **name** | **string**| Name of the Dimelo Digital (String) | [optional] 
@@ -198,4 +213,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

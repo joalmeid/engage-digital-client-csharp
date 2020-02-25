@@ -8,9 +8,10 @@ Method | HTTP request | Description
 [**GetAllAttachments**](AttachmentsApi.md#getallattachments) | **GET** /attachments | Getting all attachments
 [**GetAttachment**](AttachmentsApi.md#getattachment) | **GET** /attachments/{attachmentId} | Getting an attachment from its id
 
+
 <a name="createattachment"></a>
 # **CreateAttachment**
-> Attachment CreateAttachment (Body body = null)
+> Attachment CreateAttachment (System.IO.Stream file = null, string _private = null)
 
 Creating an attachment
 
@@ -18,7 +19,7 @@ This method allows you to create an new attachment.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -28,20 +29,25 @@ namespace Example
 {
     public class CreateAttachmentExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new AttachmentsApi();
-            var body = new Body(); // Body |  (optional) 
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new AttachmentsApi(config);
+            var file = BINARY_DATA_HERE;  // System.IO.Stream |  (optional) 
+            var _private = _private_example;  // string |  (optional) 
 
             try
             {
                 // Creating an attachment
-                Attachment result = apiInstance.CreateAttachment(body);
+                Attachment result = apiInstance.CreateAttachment(file, _private);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling AttachmentsApi.CreateAttachment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -52,7 +58,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Body**](Body.md)|  | [optional] 
+ **file** | **System.IO.Stream****System.IO.Stream**|  | [optional] 
+ **_private** | **string**|  | [optional] 
 
 ### Return type
 
@@ -67,7 +74,14 @@ No authorization required
  - **Content-Type**: multipart/form-data:
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **422** | Compose is not supported on this source (compose_disabled_on_source) |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallattachments"></a>
 # **GetAllAttachments**
 > GetAllAttachmentsResponse GetAllAttachments (int? offset = null, int? limit = null)
@@ -78,7 +92,7 @@ This method renders attachments ordered by creation date (descending).
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -88,9 +102,11 @@ namespace Example
 {
     public class GetAllAttachmentsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new AttachmentsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new AttachmentsApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -100,9 +116,11 @@ namespace Example
                 GetAllAttachmentsResponse result = apiInstance.GetAllAttachments(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling AttachmentsApi.GetAllAttachments: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -129,7 +147,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getattachment"></a>
 # **GetAttachment**
 > Attachment GetAttachment (string attachmentId)
@@ -140,7 +164,7 @@ This method renders an attachment from given id.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -150,9 +174,11 @@ namespace Example
 {
     public class GetAttachmentExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new AttachmentsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new AttachmentsApi(config);
             var attachmentId = attachmentId_example;  // string | 
 
             try
@@ -161,9 +187,11 @@ namespace Example
                 Attachment result = apiInstance.GetAttachment(attachmentId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling AttachmentsApi.GetAttachment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -189,4 +217,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

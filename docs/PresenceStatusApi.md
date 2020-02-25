@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GetPresenceStatus**](PresenceStatusApi.md#getpresencestatus) | **GET** /presence_status/{presenceStatusId} | Getting a presence status from its id
 [**UpdatePresenceStatus**](PresenceStatusApi.md#updatepresencestatus) | **PUT** /presence_status/{presenceStatusId} | Updating a presence status
 
+
 <a name="createpresencestatus"></a>
 # **CreatePresenceStatus**
 > PresenceStatus CreatePresenceStatus (string name)
@@ -20,7 +21,7 @@ This method creates a presence status. In case of success it renders the presenc
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -30,9 +31,11 @@ namespace Example
 {
     public class CreatePresenceStatusExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new PresenceStatusApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new PresenceStatusApi(config);
             var name = name_example;  // string | The name of the presence status.
 
             try
@@ -41,9 +44,11 @@ namespace Example
                 PresenceStatus result = apiInstance.CreatePresenceStatus(name);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling PresenceStatusApi.CreatePresenceStatus: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -69,7 +74,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletepresencestatus"></a>
 # **DeletePresenceStatus**
 > PresenceStatus DeletePresenceStatus (string presenceStatusId)
@@ -80,7 +91,7 @@ This method destroys an existing presence status. It renders presence status its
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -90,9 +101,11 @@ namespace Example
 {
     public class DeletePresenceStatusExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new PresenceStatusApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new PresenceStatusApi(config);
             var presenceStatusId = presenceStatusId_example;  // string | 
 
             try
@@ -101,9 +114,11 @@ namespace Example
                 PresenceStatus result = apiInstance.DeletePresenceStatus(presenceStatusId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling PresenceStatusApi.DeletePresenceStatus: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -129,7 +144,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallpresencestatus"></a>
 # **GetAllPresenceStatus**
 > GetAllPresenceStatusResponse GetAllPresenceStatus (int? offset = null, int? limit = null)
@@ -140,7 +161,7 @@ This method renders all presence statuses ordered by name (in alphabetical order
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -150,9 +171,11 @@ namespace Example
 {
     public class GetAllPresenceStatusExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new PresenceStatusApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new PresenceStatusApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -162,9 +185,11 @@ namespace Example
                 GetAllPresenceStatusResponse result = apiInstance.GetAllPresenceStatus(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling PresenceStatusApi.GetAllPresenceStatus: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -191,7 +216,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getpresencestatus"></a>
 # **GetPresenceStatus**
 > PresenceStatus GetPresenceStatus (string presenceStatusId)
@@ -202,7 +233,7 @@ This method renders a presence status from given id.  Authorization​: only use
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -212,9 +243,11 @@ namespace Example
 {
     public class GetPresenceStatusExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new PresenceStatusApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new PresenceStatusApi(config);
             var presenceStatusId = presenceStatusId_example;  // string | 
 
             try
@@ -223,9 +256,11 @@ namespace Example
                 PresenceStatus result = apiInstance.GetPresenceStatus(presenceStatusId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling PresenceStatusApi.GetPresenceStatus: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -251,7 +286,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatepresencestatus"></a>
 # **UpdatePresenceStatus**
 > PresenceStatus UpdatePresenceStatus (string presenceStatusId, string name)
@@ -262,7 +303,7 @@ This method updates an existing presence status from given attributes and render
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -272,9 +313,11 @@ namespace Example
 {
     public class UpdatePresenceStatusExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new PresenceStatusApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new PresenceStatusApi(config);
             var presenceStatusId = presenceStatusId_example;  // string | 
             var name = name_example;  // string | The name of the presence status.
 
@@ -284,9 +327,11 @@ namespace Example
                 PresenceStatus result = apiInstance.UpdatePresenceStatus(presenceStatusId, name);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling PresenceStatusApi.UpdatePresenceStatus: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -313,4 +358,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

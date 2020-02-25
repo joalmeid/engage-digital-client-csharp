@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**GetSource**](SourcesApi.md#getsource) | **GET** /content_sources/{sourceId} | Getting a source from its id
 [**UpdateSource**](SourcesApi.md#updatesource) | **PUT** /content_sources/{sourceId} | Updating a source
 
+
 <a name="getallsources"></a>
 # **GetAllSources**
 > GetAllSourcesResponse GetAllSources (int? offset = null, int? limit = null)
@@ -18,7 +19,7 @@ This method renders sources ordered by creation date (ascending).
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -28,9 +29,11 @@ namespace Example
 {
     public class GetAllSourcesExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new SourcesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new SourcesApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -40,9 +43,11 @@ namespace Example
                 GetAllSourcesResponse result = apiInstance.GetAllSources(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling SourcesApi.GetAllSources: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -69,7 +74,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getsource"></a>
 # **GetSource**
 > Source GetSource (string sourceId)
@@ -80,7 +91,7 @@ This method renders a source from given id.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -90,9 +101,11 @@ namespace Example
 {
     public class GetSourceExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new SourcesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new SourcesApi(config);
             var sourceId = sourceId_example;  // string | 
 
             try
@@ -101,9 +114,11 @@ namespace Example
                 Source result = apiInstance.GetSource(sourceId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling SourcesApi.GetSource: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -129,10 +144,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatesource"></a>
 # **UpdateSource**
-> Source UpdateSource (string sourceId, string name = null, bool? active = null, string channelId = null, int? color = null, int? slaResponse = null, string slaExpiredStrategy = null, int? interventionMessagesBoost = null, int? transferredTasksBoost = null, bool? hiddenFromStats = null, List<string> defaultCategoryIds = null, List<string> userThreadDefaultCategoryIds = null, string defaultContentLanguage = null, bool? autoDetectContentLanguage = null, bool? contentArchiving = null, int? contentArchivingPeriod = null)
+> Source UpdateSource (string sourceId, string name = null, bool? active = null, string channelId = null, int? color = null, int? slaResponse = null, string slaExpiredStrategy = null, int? interventionMessagesBoost = null, int? transferredTasksBoost = null, bool? hiddenFromStats = null, Collection<string> defaultCategoryIds = null, Collection<string> userThreadDefaultCategoryIds = null, string defaultContentLanguage = null, bool? autoDetectContentLanguage = null, bool? contentArchiving = null, int? contentArchivingPeriod = null)
 
 Updating a source
 
@@ -140,7 +161,7 @@ This method updates an existing source from given attributes and renders it in c
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -150,9 +171,11 @@ namespace Example
 {
     public class UpdateSourceExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new SourcesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new SourcesApi(config);
             var sourceId = sourceId_example;  // string | 
             var name = name_example;  // string | Source name (optional) 
             var active = true;  // bool? | Activate/deactivate the source (Boolean) (optional) 
@@ -163,8 +186,8 @@ namespace Example
             var interventionMessagesBoost = 56;  // int? | Priority boost of messages with intervention (Integer) (optional) 
             var transferredTasksBoost = 56;  // int? | Priority boost of transferred tasks (Integer) (optional) 
             var hiddenFromStats = true;  // bool? | Hide from statistics (Boolean) (optional) 
-            var defaultCategoryIds = new List<string>(); // List<string> | Default categories (optional) 
-            var userThreadDefaultCategoryIds = new List<string>(); // List<string> | Default categories (agent messages) (optional) 
+            var defaultCategoryIds = new Collection<string>(); // Collection<string> | Default categories (optional) 
+            var userThreadDefaultCategoryIds = new Collection<string>(); // Collection<string> | Default categories (agent messages) (optional) 
             var defaultContentLanguage = defaultContentLanguage_example;  // string | Default content language (optional) 
             var autoDetectContentLanguage = true;  // bool? | Auto-detect content language (Boolean) (optional) 
             var contentArchiving = true;  // bool? | Automatic archiving of old contents (Boolean) (optional) 
@@ -176,9 +199,11 @@ namespace Example
                 Source result = apiInstance.UpdateSource(sourceId, name, active, channelId, color, slaResponse, slaExpiredStrategy, interventionMessagesBoost, transferredTasksBoost, hiddenFromStats, defaultCategoryIds, userThreadDefaultCategoryIds, defaultContentLanguage, autoDetectContentLanguage, contentArchiving, contentArchivingPeriod);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling SourcesApi.UpdateSource: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -199,8 +224,8 @@ Name | Type | Description  | Notes
  **interventionMessagesBoost** | **int?**| Priority boost of messages with intervention (Integer) | [optional] 
  **transferredTasksBoost** | **int?**| Priority boost of transferred tasks (Integer) | [optional] 
  **hiddenFromStats** | **bool?**| Hide from statistics (Boolean) | [optional] 
- **defaultCategoryIds** | [**List&lt;string&gt;**](string.md)| Default categories | [optional] 
- **userThreadDefaultCategoryIds** | [**List&lt;string&gt;**](string.md)| Default categories (agent messages) | [optional] 
+ **defaultCategoryIds** | [**Collection&lt;string&gt;**](string.md)| Default categories | [optional] 
+ **userThreadDefaultCategoryIds** | [**Collection&lt;string&gt;**](string.md)| Default categories (agent messages) | [optional] 
  **defaultContentLanguage** | **string**| Default content language | [optional] 
  **autoDetectContentLanguage** | **bool?**| Auto-detect content language (Boolean) | [optional] 
  **contentArchiving** | **bool?**| Automatic archiving of old contents (Boolean) | [optional] 
@@ -219,4 +244,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

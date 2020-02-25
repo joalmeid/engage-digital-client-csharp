@@ -10,9 +10,10 @@ Method | HTTP request | Description
 [**GetFolder**](FoldersApi.md#getfolder) | **GET** /folders/{folderId} | Getting a folder from its id
 [**UpdateFolder**](FoldersApi.md#updatefolder) | **PUT** /folders/{folderId} | Updating a folder
 
+
 <a name="createfolder"></a>
 # **CreateFolder**
-> Folder CreateFolder (string label = null, string parentId = null, int? position = null, string query = null, bool? renderThreadsCount = null, List<string> roleRestrictionOnly = null, List<string> teamRestrictionOnly = null)
+> Folder CreateFolder (string label = null, string parentId = null, int? position = null, string query = null, bool? renderThreadsCount = null, Collection<string> roleRestrictionOnly = null, Collection<string> teamRestrictionOnly = null)
 
 Creating a folder
 
@@ -20,7 +21,7 @@ This method creates a new folder. In case of success it renders the created fold
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -30,16 +31,18 @@ namespace Example
 {
     public class CreateFolderExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new FoldersApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new FoldersApi(config);
             var label = label_example;  // string | Folder’s label (mandatory). (optional) 
             var parentId = parentId_example;  // string | ID of the parent folder. (optional) 
             var position = 56;  // int? | position of the folder.  (optional) 
             var query = query_example;  // string | query of the folder as described in ​Search API documentation.​\\n\\nExample: “​active_and_assigned_to_me:true” (optional) 
             var renderThreadsCount = true;  // bool? | boolean describing display of the number of threads.  (optional) 
-            var roleRestrictionOnly = new List<string>(); // List<string> | list of roles allowed to see this folder. This parameter has to be a hash otherwise it will raise a 400 error. The key should be \"only\". For example: `&role_restriction[only][]=4e5596cdae70f677b5000002` (optional) 
-            var teamRestrictionOnly = new List<string>(); // List<string> | list of teams allowed to see this folder. Same thing as role_restriction: team_restriction parameter has to be a hash with the key \"only\". (optional) 
+            var roleRestrictionOnly = new Collection<string>(); // Collection<string> | list of roles allowed to see this folder. This parameter has to be a hash otherwise it will raise a 400 error. The key should be \"only\". For example: `&role_restriction[only][]=4e5596cdae70f677b5000002` (optional) 
+            var teamRestrictionOnly = new Collection<string>(); // Collection<string> | list of teams allowed to see this folder. Same thing as role_restriction: team_restriction parameter has to be a hash with the key \"only\". (optional) 
 
             try
             {
@@ -47,9 +50,11 @@ namespace Example
                 Folder result = apiInstance.CreateFolder(label, parentId, position, query, renderThreadsCount, roleRestrictionOnly, teamRestrictionOnly);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling FoldersApi.CreateFolder: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -65,8 +70,8 @@ Name | Type | Description  | Notes
  **position** | **int?**| position of the folder.  | [optional] 
  **query** | **string**| query of the folder as described in ​Search API documentation.​\\n\\nExample: “​active_and_assigned_to_me:true” | [optional] 
  **renderThreadsCount** | **bool?**| boolean describing display of the number of threads.  | [optional] 
- **roleRestrictionOnly** | [**List&lt;string&gt;**](string.md)| list of roles allowed to see this folder. This parameter has to be a hash otherwise it will raise a 400 error. The key should be \&quot;only\&quot;. For example: &#x60;&amp;role_restriction[only][]&#x3D;4e5596cdae70f677b5000002&#x60; | [optional] 
- **teamRestrictionOnly** | [**List&lt;string&gt;**](string.md)| list of teams allowed to see this folder. Same thing as role_restriction: team_restriction parameter has to be a hash with the key \&quot;only\&quot;. | [optional] 
+ **roleRestrictionOnly** | [**Collection&lt;string&gt;**](string.md)| list of roles allowed to see this folder. This parameter has to be a hash otherwise it will raise a 400 error. The key should be \&quot;only\&quot;. For example: &#x60;&amp;role_restriction[only][]&#x3D;4e5596cdae70f677b5000002&#x60; | [optional] 
+ **teamRestrictionOnly** | [**Collection&lt;string&gt;**](string.md)| list of teams allowed to see this folder. Same thing as role_restriction: team_restriction parameter has to be a hash with the key \&quot;only\&quot;. | [optional] 
 
 ### Return type
 
@@ -81,7 +86,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletefolder"></a>
 # **DeleteFolder**
 > Folder DeleteFolder (string folderId)
@@ -92,7 +103,7 @@ This method destroys an existing folder. It renders the folder itself. It render
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -102,9 +113,11 @@ namespace Example
 {
     public class DeleteFolderExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new FoldersApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new FoldersApi(config);
             var folderId = folderId_example;  // string | 
 
             try
@@ -113,9 +126,11 @@ namespace Example
                 Folder result = apiInstance.DeleteFolder(folderId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling FoldersApi.DeleteFolder: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -141,7 +156,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallfolders"></a>
 # **GetAllFolders**
 > GetAllFoldersResponse GetAllFolders (int? offset = null, int? limit = null)
@@ -152,7 +173,7 @@ This method renders folders.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -162,9 +183,11 @@ namespace Example
 {
     public class GetAllFoldersExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new FoldersApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new FoldersApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -174,9 +197,11 @@ namespace Example
                 GetAllFoldersResponse result = apiInstance.GetAllFolders(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling FoldersApi.GetAllFolders: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -203,7 +228,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getfolder"></a>
 # **GetFolder**
 > Folder GetFolder (string folderId)
@@ -214,7 +245,7 @@ This method renders a folder from given id.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -224,9 +255,11 @@ namespace Example
 {
     public class GetFolderExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new FoldersApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new FoldersApi(config);
             var folderId = folderId_example;  // string | 
 
             try
@@ -235,9 +268,11 @@ namespace Example
                 Folder result = apiInstance.GetFolder(folderId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling FoldersApi.GetFolder: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -263,10 +298,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatefolder"></a>
 # **UpdateFolder**
-> Folder UpdateFolder (string folderId, string label = null, string parentId = null, int? position = null, string query = null, bool? renderThreadsCount = null, List<string> roleRestrictionOnly = null, List<string> teamRestrictionOnly = null)
+> Folder UpdateFolder (string folderId, string label = null, string parentId = null, int? position = null, string query = null, bool? renderThreadsCount = null, Collection<string> roleRestrictionOnly = null, Collection<string> teamRestrictionOnly = null)
 
 Updating a folder
 
@@ -274,7 +315,7 @@ This method updates an existing folder from given attributes and renders it in c
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -284,17 +325,19 @@ namespace Example
 {
     public class UpdateFolderExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new FoldersApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new FoldersApi(config);
             var folderId = folderId_example;  // string | 
             var label = label_example;  // string | Folder’s label (mandatory). (optional) 
             var parentId = parentId_example;  // string | ID of the parent folder. (optional) 
             var position = 56;  // int? | position of the folder.  (optional) 
             var query = query_example;  // string | query of the folder as described in ​Search API documentation.​\\n\\nExample: “​active_and_assigned_to_me:true” (optional) 
             var renderThreadsCount = true;  // bool? | boolean describing display of the number of threads.  (optional) 
-            var roleRestrictionOnly = new List<string>(); // List<string> | list of roles allowed to see this folder. This parameter has to be a hash otherwise it will raise a 400 error. The key should be \"only\". For example: `&role_restriction[only][]=4e5596cdae70f677b5000002` (optional) 
-            var teamRestrictionOnly = new List<string>(); // List<string> | list of teams allowed to see this folder. Same thing as role_restriction: team_restriction parameter has to be a hash with the key \"only\". (optional) 
+            var roleRestrictionOnly = new Collection<string>(); // Collection<string> | list of roles allowed to see this folder. This parameter has to be a hash otherwise it will raise a 400 error. The key should be \"only\". For example: `&role_restriction[only][]=4e5596cdae70f677b5000002` (optional) 
+            var teamRestrictionOnly = new Collection<string>(); // Collection<string> | list of teams allowed to see this folder. Same thing as role_restriction: team_restriction parameter has to be a hash with the key \"only\". (optional) 
 
             try
             {
@@ -302,9 +345,11 @@ namespace Example
                 Folder result = apiInstance.UpdateFolder(folderId, label, parentId, position, query, renderThreadsCount, roleRestrictionOnly, teamRestrictionOnly);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling FoldersApi.UpdateFolder: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -321,8 +366,8 @@ Name | Type | Description  | Notes
  **position** | **int?**| position of the folder.  | [optional] 
  **query** | **string**| query of the folder as described in ​Search API documentation.​\\n\\nExample: “​active_and_assigned_to_me:true” | [optional] 
  **renderThreadsCount** | **bool?**| boolean describing display of the number of threads.  | [optional] 
- **roleRestrictionOnly** | [**List&lt;string&gt;**](string.md)| list of roles allowed to see this folder. This parameter has to be a hash otherwise it will raise a 400 error. The key should be \&quot;only\&quot;. For example: &#x60;&amp;role_restriction[only][]&#x3D;4e5596cdae70f677b5000002&#x60; | [optional] 
- **teamRestrictionOnly** | [**List&lt;string&gt;**](string.md)| list of teams allowed to see this folder. Same thing as role_restriction: team_restriction parameter has to be a hash with the key \&quot;only\&quot;. | [optional] 
+ **roleRestrictionOnly** | [**Collection&lt;string&gt;**](string.md)| list of roles allowed to see this folder. This parameter has to be a hash otherwise it will raise a 400 error. The key should be \&quot;only\&quot;. For example: &#x60;&amp;role_restriction[only][]&#x3D;4e5596cdae70f677b5000002&#x60; | [optional] 
+ **teamRestrictionOnly** | [**Collection&lt;string&gt;**](string.md)| list of teams allowed to see this folder. Same thing as role_restriction: team_restriction parameter has to be a hash with the key \&quot;only\&quot;. | [optional] 
 
 ### Return type
 
@@ -337,4 +382,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

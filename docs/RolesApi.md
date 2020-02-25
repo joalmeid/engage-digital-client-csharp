@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**GetRole**](RolesApi.md#getrole) | **GET** /roles/{roleId} | Getting a role from its id
 [**UpdateRole**](RolesApi.md#updaterole) | **PUT** /roles/{roleId} | Updating a role
 
+
 <a name="createrole"></a>
 # **CreateRole**
 > Role CreateRole (string label, bool? accessHelpCenter = null, bool? accessPreviousMessages = null, bool? accessPullMode = null, bool? adminStampAnswer = null, bool? approveContent = null, bool? assignIntervention = null, bool? authorBlockContent = null, bool? closeContentThread = null, bool? createAndDestroyExtension = null, bool? createCommunity = null, bool? createContentSource = null, bool? createUser = null, bool? delayExportContent = null, bool? deleteContentThread = null, bool? impersonateUser = null, bool? inviteUser = null, bool? manageApiAccessTokens = null, bool? manageAppSdkApplications = null, bool? manageAutomaticExportsTasks = null, bool? manageCategories = null, bool? manageChat = null, bool? manageCustomFields = null, bool? manageCustomNotifications = null, bool? manageEmailsTemplates = null, bool? manageFolders = null, bool? manageIce = null, bool? manageIdentities = null, bool? manageOwnNotifications = null, bool? manageReplyAssistant = null, bool? manageRoles = null, bool? manageRulesEngineRules = null, bool? manageSurveys = null, bool? manageTags = null, bool? manageTeams = null, bool? manageTopologies = null, bool? manageUsersOfMyTeams = null, bool? monitorTasks = null, bool? monitorTeamTasks = null, bool? muteContent = null, bool? openContentThread = null, bool? publishContent = null, bool? readCommunity = null, bool? readContentSource = null, bool? readEvent = null, bool? readExport = null, bool? readIdentity = null, bool? readOwnStats = null, bool? readPresence = null, bool? readStats = null, bool? readSurveys = null, bool? readUser = null, bool? receiveTasks = null, bool? replyWithAssistant = null, bool? searchContents = null, bool? searchEvent = null, bool? updateCommunity = null, bool? updateContentSource = null, bool? updateExtension = null, bool? updateIdentity = null, bool? updateIntervention = null, bool? updateOwnIntervention = null, bool? updateSettings = null, bool? updateTimeSheet = null, bool? updateUser = null, bool? useEmoji = null)
@@ -19,7 +20,7 @@ This method creates a new role. In case of success it renders the created role, 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -29,9 +30,11 @@ namespace Example
 {
     public class CreateRoleExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new RolesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new RolesApi(config);
             var label = label_example;  // string | 
             var accessHelpCenter = true;  // bool? |  (optional) 
             var accessPreviousMessages = true;  // bool? |  (optional) 
@@ -105,9 +108,11 @@ namespace Example
                 Role result = apiInstance.CreateRole(label, accessHelpCenter, accessPreviousMessages, accessPullMode, adminStampAnswer, approveContent, assignIntervention, authorBlockContent, closeContentThread, createAndDestroyExtension, createCommunity, createContentSource, createUser, delayExportContent, deleteContentThread, impersonateUser, inviteUser, manageApiAccessTokens, manageAppSdkApplications, manageAutomaticExportsTasks, manageCategories, manageChat, manageCustomFields, manageCustomNotifications, manageEmailsTemplates, manageFolders, manageIce, manageIdentities, manageOwnNotifications, manageReplyAssistant, manageRoles, manageRulesEngineRules, manageSurveys, manageTags, manageTeams, manageTopologies, manageUsersOfMyTeams, monitorTasks, monitorTeamTasks, muteContent, openContentThread, publishContent, readCommunity, readContentSource, readEvent, readExport, readIdentity, readOwnStats, readPresence, readStats, readSurveys, readUser, receiveTasks, replyWithAssistant, searchContents, searchEvent, updateCommunity, updateContentSource, updateExtension, updateIdentity, updateIntervention, updateOwnIntervention, updateSettings, updateTimeSheet, updateUser, useEmoji);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling RolesApi.CreateRole: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -198,7 +203,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallroles"></a>
 # **GetAllRoles**
 > GetAllRolesResponse GetAllRoles (int? offset = null, int? limit = null)
@@ -209,7 +220,7 @@ This method renders roles ordered by creation date (ascending).
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -219,9 +230,11 @@ namespace Example
 {
     public class GetAllRolesExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new RolesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new RolesApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -231,9 +244,11 @@ namespace Example
                 GetAllRolesResponse result = apiInstance.GetAllRoles(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling RolesApi.GetAllRoles: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -260,7 +275,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getrole"></a>
 # **GetRole**
 > Role GetRole (string roleId)
@@ -271,7 +292,7 @@ This method renders a role from given id.  Authorization​: only users that can
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -281,9 +302,11 @@ namespace Example
 {
     public class GetRoleExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new RolesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new RolesApi(config);
             var roleId = roleId_example;  // string | 
 
             try
@@ -292,9 +315,11 @@ namespace Example
                 Role result = apiInstance.GetRole(roleId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling RolesApi.GetRole: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -320,7 +345,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updaterole"></a>
 # **UpdateRole**
 > Role UpdateRole (string roleId, bool? accessHelpCenter = null, bool? accessPreviousMessages = null, bool? accessPullMode = null, bool? adminStampAnswer = null, bool? approveContent = null, bool? assignIntervention = null, bool? authorBlockContent = null, bool? closeContentThread = null, bool? createAndDestroyExtension = null, bool? createCommunity = null, bool? createContentSource = null, bool? createUser = null, bool? delayExportContent = null, bool? deleteContentThread = null, bool? impersonateUser = null, bool? inviteUser = null, bool? manageApiAccessTokens = null, bool? manageAppSdkApplications = null, bool? manageAutomaticExportsTasks = null, bool? manageCategories = null, bool? manageChat = null, bool? manageCustomFields = null, bool? manageCustomNotifications = null, bool? manageEmailsTemplates = null, bool? manageFolders = null, bool? manageIce = null, bool? manageIdentities = null, bool? manageOwnNotifications = null, bool? manageReplyAssistant = null, bool? manageRoles = null, bool? manageRulesEngineRules = null, bool? manageSurveys = null, bool? manageTags = null, bool? manageTeams = null, bool? manageTopologies = null, bool? manageUsersOfMyTeams = null, bool? monitorTasks = null, bool? monitorTeamTasks = null, bool? muteContent = null, bool? openContentThread = null, bool? publishContent = null, bool? readCommunity = null, bool? readContentSource = null, bool? readEvent = null, bool? readExport = null, bool? readIdentity = null, bool? readOwnStats = null, bool? readPresence = null, bool? readStats = null, bool? readSurveys = null, bool? readUser = null, bool? receiveTasks = null, bool? replyWithAssistant = null, bool? searchContents = null, bool? searchEvent = null, bool? updateCommunity = null, bool? updateContentSource = null, bool? updateExtension = null, bool? updateIdentity = null, bool? updateIntervention = null, bool? updateOwnIntervention = null, bool? updateSettings = null, bool? updateTimeSheet = null, bool? updateUser = null, bool? useEmoji = null)
@@ -331,7 +362,7 @@ This method updates an existing role from given attributes and renders it in cas
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -341,9 +372,11 @@ namespace Example
 {
     public class UpdateRoleExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new RolesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new RolesApi(config);
             var roleId = roleId_example;  // string | 
             var accessHelpCenter = true;  // bool? |  (optional) 
             var accessPreviousMessages = true;  // bool? |  (optional) 
@@ -417,9 +450,11 @@ namespace Example
                 Role result = apiInstance.UpdateRole(roleId, accessHelpCenter, accessPreviousMessages, accessPullMode, adminStampAnswer, approveContent, assignIntervention, authorBlockContent, closeContentThread, createAndDestroyExtension, createCommunity, createContentSource, createUser, delayExportContent, deleteContentThread, impersonateUser, inviteUser, manageApiAccessTokens, manageAppSdkApplications, manageAutomaticExportsTasks, manageCategories, manageChat, manageCustomFields, manageCustomNotifications, manageEmailsTemplates, manageFolders, manageIce, manageIdentities, manageOwnNotifications, manageReplyAssistant, manageRoles, manageRulesEngineRules, manageSurveys, manageTags, manageTeams, manageTopologies, manageUsersOfMyTeams, monitorTasks, monitorTeamTasks, muteContent, openContentThread, publishContent, readCommunity, readContentSource, readEvent, readExport, readIdentity, readOwnStats, readPresence, readStats, readSurveys, readUser, receiveTasks, replyWithAssistant, searchContents, searchEvent, updateCommunity, updateContentSource, updateExtension, updateIdentity, updateIntervention, updateOwnIntervention, updateSettings, updateTimeSheet, updateUser, useEmoji);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling RolesApi.UpdateRole: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -510,4 +545,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

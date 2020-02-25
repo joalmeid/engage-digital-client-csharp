@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**GetAllEvents**](EventsApi.md#getallevents) | **GET** /events | Getting all events
 [**GetEvent**](EventsApi.md#getevent) | **GET** /events/{eventId} | Getting an event from its id
 
+
 <a name="getallevents"></a>
 # **GetAllEvents**
 > GetAllEventsResponse GetAllEvents (string q = null, int? offset = null, int? limit = null)
@@ -17,7 +18,7 @@ This method renders events ordered by creation date (descending).  Authorization
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -27,9 +28,11 @@ namespace Example
 {
     public class GetAllEventsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new EventsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new EventsApi(config);
             var q = q_example;  // string | To filter events on given query. Query works exactly like threads query but only have those keywords: content, content_thread, name_in, created_before, created_after, user. Order can be created_at.desc (default) or created_at.asc. e.g. q=name_in:\"content.replied\"%20content_thread:\"7f946431b6eebffafae642cc\"%20created_after:\"2014-03-20\"%20user:\"4ee91f197aa58d01b500000f\"%20order:\"created_at.asc\" * DateTime parameters should be ISO-8601 * you can specify multiple value for a given keyword: q=name_in:’content.replied’&name_in:’content.ignored’ Please refer to ​Search & filtering parameters​ for more details. (optional) 
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
@@ -40,9 +43,11 @@ namespace Example
                 GetAllEventsResponse result = apiInstance.GetAllEvents(q, offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling EventsApi.GetAllEvents: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -70,7 +75,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getevent"></a>
 # **GetEvent**
 > Event GetEvent (string eventId)
@@ -81,7 +92,7 @@ This method renders an event from given id. If token’s user role does not have
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -91,9 +102,11 @@ namespace Example
 {
     public class GetEventExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new EventsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new EventsApi(config);
             var eventId = eventId_example;  // string | 
 
             try
@@ -102,9 +115,11 @@ namespace Example
                 Event result = apiInstance.GetEvent(eventId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling EventsApi.GetEvent: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -130,4 +145,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

@@ -10,9 +10,10 @@ Method | HTTP request | Description
 [**GetCustomField**](CustomFieldsApi.md#getcustomfield) | **GET** /custom_fields/{customFieldId} | Getting a custom field from its id
 [**UpdateCustomField**](CustomFieldsApi.md#updatecustomfield) | **PUT** /custom_fields/{customFieldId} | Updating a custom field
 
+
 <a name="createcustomfield"></a>
 # **CreateCustomField**
-> CustomField CreateCustomField (string associatedTypeName, string label, string key = null, string type = null, List<string> choices = null, bool? multiple = null, int? position = null)
+> CustomField CreateCustomField (string associatedTypeName, string label, string key = null, string type = null, Collection<string> choices = null, bool? multiple = null, int? position = null)
 
 Creating a custom field
 
@@ -20,7 +21,7 @@ This method creates a custom field. In case of success it renders the custom fie
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -30,16 +31,18 @@ namespace Example
 {
     public class CreateCustomFieldExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new CustomFieldsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new CustomFieldsApi(config);
             var associatedTypeName = associatedTypeName_example;  // string | The associated type of custom field. It can be IdentityGroup or Intervention.
             var label = label_example;  // string | The label of the custom field.
             var key = key_example;  // string | The key of the custom field (example: customer_id). This is used to determine how it is stored on identity groups. (optional) 
             var type = type_example;  // string | The type of the custom field. It can be string, boolean, text, integer, float, single_choice, (optional) 
-            var choices = new List<string>(); // List<string> | A list of choices to be for single_choice, or multiple_choice types. This must be given (optional) 
+            var choices = new Collection<string>(); // Collection<string> | A list of choices to be for single_choice, or multiple_choice types. This must be given (optional) 
             var multiple = true;  // bool? | true or false, this as no effect on single_choice, multiple_choice or boolean types (optional) 
-            var position = 56;  // int? | an integer that indicates custom field’s position between others (default: -1). (optional) 
+            var position = 56;  // int? | an integer that indicates custom field’s position between others (default: -1). (optional)  (default to -1)
 
             try
             {
@@ -47,9 +50,11 @@ namespace Example
                 CustomField result = apiInstance.CreateCustomField(associatedTypeName, label, key, type, choices, multiple, position);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling CustomFieldsApi.CreateCustomField: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -64,9 +69,9 @@ Name | Type | Description  | Notes
  **label** | **string**| The label of the custom field. | 
  **key** | **string**| The key of the custom field (example: customer_id). This is used to determine how it is stored on identity groups. | [optional] 
  **type** | **string**| The type of the custom field. It can be string, boolean, text, integer, float, single_choice, | [optional] 
- **choices** | [**List&lt;string&gt;**](string.md)| A list of choices to be for single_choice, or multiple_choice types. This must be given | [optional] 
+ **choices** | [**Collection&lt;string&gt;**](string.md)| A list of choices to be for single_choice, or multiple_choice types. This must be given | [optional] 
  **multiple** | **bool?**| true or false, this as no effect on single_choice, multiple_choice or boolean types | [optional] 
- **position** | **int?**| an integer that indicates custom field’s position between others (default: -1). | [optional] 
+ **position** | **int?**| an integer that indicates custom field’s position between others (default: -1). | [optional] [default to -1]
 
 ### Return type
 
@@ -81,7 +86,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletecustomfield"></a>
 # **DeleteCustomField**
 > CustomField DeleteCustomField (string customFieldId)
@@ -92,7 +103,7 @@ This method destroys an existing custom field. It renders custom field itself. I
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -102,9 +113,11 @@ namespace Example
 {
     public class DeleteCustomFieldExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new CustomFieldsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new CustomFieldsApi(config);
             var customFieldId = customFieldId_example;  // string | 
 
             try
@@ -113,9 +126,11 @@ namespace Example
                 CustomField result = apiInstance.DeleteCustomField(customFieldId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling CustomFieldsApi.DeleteCustomField: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -141,7 +156,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallcustomfields"></a>
 # **GetAllCustomFields**
 > GetAllCustomFieldsResponse GetAllCustomFields (int? offset = null, int? limit = null)
@@ -152,7 +173,7 @@ This method renders custom fields ordered by position (ascending).  Authorizatio
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -162,9 +183,11 @@ namespace Example
 {
     public class GetAllCustomFieldsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new CustomFieldsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new CustomFieldsApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -174,9 +197,11 @@ namespace Example
                 GetAllCustomFieldsResponse result = apiInstance.GetAllCustomFields(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling CustomFieldsApi.GetAllCustomFields: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -203,7 +228,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getcustomfield"></a>
 # **GetCustomField**
 > CustomField GetCustomField (string customFieldId)
@@ -214,7 +245,7 @@ This method renders a custom field from given id.  Authorization​: only users 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -224,9 +255,11 @@ namespace Example
 {
     public class GetCustomFieldExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new CustomFieldsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new CustomFieldsApi(config);
             var customFieldId = customFieldId_example;  // string | 
 
             try
@@ -235,9 +268,11 @@ namespace Example
                 CustomField result = apiInstance.GetCustomField(customFieldId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling CustomFieldsApi.GetCustomField: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -263,10 +298,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatecustomfield"></a>
 # **UpdateCustomField**
-> CustomField UpdateCustomField (string customFieldId, string label = null, List<string> choices = null, int? position = null)
+> CustomField UpdateCustomField (string customFieldId, string label = null, Collection<string> choices = null, int? position = null)
 
 Updating a custom field
 
@@ -274,7 +315,7 @@ This method updates an existing custom field from given attributes and renders i
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -284,12 +325,14 @@ namespace Example
 {
     public class UpdateCustomFieldExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new CustomFieldsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new CustomFieldsApi(config);
             var customFieldId = customFieldId_example;  // string | 
             var label = label_example;  // string | Custom field’s label. (optional) 
-            var choices = new List<string>(); // List<string> |  (optional) 
+            var choices = new Collection<string>(); // Collection<string> |  (optional) 
             var position = 56;  // int? | Custom field’s position. (optional) 
 
             try
@@ -298,9 +341,11 @@ namespace Example
                 CustomField result = apiInstance.UpdateCustomField(customFieldId, label, choices, position);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling CustomFieldsApi.UpdateCustomField: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -313,7 +358,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customFieldId** | **string**|  | 
  **label** | **string**| Custom field’s label. | [optional] 
- **choices** | [**List&lt;string&gt;**](string.md)|  | [optional] 
+ **choices** | [**Collection&lt;string&gt;**](string.md)|  | [optional] 
  **position** | **int?**| Custom field’s position. | [optional] 
 
 ### Return type
@@ -329,4 +374,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

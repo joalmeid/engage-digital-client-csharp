@@ -3,11 +3,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Active** | **bool?** |  | [optional] 
+**Active** | **bool** |  | [optional] 
 **ApiAccessToken** | [**WebhookAccessToken**](WebhookAccessToken.md) |  | [optional] 
 **Id** | **string** |  | 
-**RegisteredEvents** | **List&lt;string&gt;** |  | [optional] 
-**StagingUse** | **bool?** |  | [optional] 
+**RegisteredEvents** | **Collection&lt;string&gt;** |  | [optional] 
+**StagingUse** | **bool** |  | [optional] 
 **Url** | **string** |  | [optional] 
 **VerifyToken** | **string** |  | [optional] 
 

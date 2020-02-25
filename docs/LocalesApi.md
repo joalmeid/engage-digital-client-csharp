@@ -6,9 +6,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetAllLocales**](LocalesApi.md#getalllocales) | **GET** /locales | Getting all locales
 
+
 <a name="getalllocales"></a>
 # **GetAllLocales**
-> List<Locale> GetAllLocales ()
+> Collection&lt;Locale&gt; GetAllLocales ()
 
 Getting all locales
 
@@ -16,7 +17,7 @@ This method renders all available locales.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -26,19 +27,23 @@ namespace Example
 {
     public class GetAllLocalesExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new LocalesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new LocalesApi(config);
 
             try
             {
                 // Getting all locales
-                List&lt;Locale&gt; result = apiInstance.GetAllLocales();
+                Collection<Locale> result = apiInstance.GetAllLocales();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling LocalesApi.GetAllLocales: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -50,7 +55,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<Locale>**](Locale.md)
+[**Collection&lt;Locale&gt;**](Locale.md)
 
 ### Authorization
 
@@ -61,4 +66,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | List of all locales |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

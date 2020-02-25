@@ -10,9 +10,10 @@ Method | HTTP request | Description
 [**GetReplyAssistantGroup**](ReplyAssistantGroupsApi.md#getreplyassistantgroup) | **GET** /reply_assistant/groups/{replyAssistantGroupId} | Getting a reply assistant group from its id
 [**UpdateReplyAssistantGroup**](ReplyAssistantGroupsApi.md#updatereplyassistantgroup) | **PUT** /reply_assistant/groups/{replyAssistantGroupId} | Updating a reply assistant group
 
+
 <a name="createreplyassistantgroup"></a>
 # **CreateReplyAssistantGroup**
-> ReplyAssistantGroup CreateReplyAssistantGroup (string name, List<string> entryIds = null, bool? autocomplete = null, int? position = null)
+> ReplyAssistantGroup CreateReplyAssistantGroup (string name, Collection<string> entryIds = null, bool? autocomplete = null, int? position = null)
 
 Creating a reply assistant group
 
@@ -20,7 +21,7 @@ This method creates an entry group. In case of success it renders the group, oth
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -30,11 +31,13 @@ namespace Example
 {
     public class CreateReplyAssistantGroupExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantGroupsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantGroupsApi(config);
             var name = name_example;  // string | The name of the group.
-            var entryIds = new List<string>(); // List<string> | List of the reply assistant entries in this group. (optional) 
+            var entryIds = new Collection<string>(); // Collection<string> | List of the reply assistant entries in this group. (optional) 
             var autocomplete = true;  // bool? | Used for autocompletion in chat. (optional) 
             var position = 56;  // int? | Used to determine the order of the groups in the interface, in ascending order. (optional) 
 
@@ -44,9 +47,11 @@ namespace Example
                 ReplyAssistantGroup result = apiInstance.CreateReplyAssistantGroup(name, entryIds, autocomplete, position);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantGroupsApi.CreateReplyAssistantGroup: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -58,7 +63,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| The name of the group. | 
- **entryIds** | [**List&lt;string&gt;**](string.md)| List of the reply assistant entries in this group. | [optional] 
+ **entryIds** | [**Collection&lt;string&gt;**](string.md)| List of the reply assistant entries in this group. | [optional] 
  **autocomplete** | **bool?**| Used for autocompletion in chat. | [optional] 
  **position** | **int?**| Used to determine the order of the groups in the interface, in ascending order. | [optional] 
 
@@ -75,7 +80,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletereplyassistantgroup"></a>
 # **DeleteReplyAssistantGroup**
 > ReplyAssistantGroup DeleteReplyAssistantGroup (string replyAssistantGroupId)
@@ -86,7 +97,7 @@ This method destroys an existing group. It renders the group itself. It renders 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -96,9 +107,11 @@ namespace Example
 {
     public class DeleteReplyAssistantGroupExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantGroupsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantGroupsApi(config);
             var replyAssistantGroupId = replyAssistantGroupId_example;  // string | 
 
             try
@@ -107,9 +120,11 @@ namespace Example
                 ReplyAssistantGroup result = apiInstance.DeleteReplyAssistantGroup(replyAssistantGroupId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantGroupsApi.DeleteReplyAssistantGroup: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -135,7 +150,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallreplyassistantgroups"></a>
 # **GetAllReplyAssistantGroups**
 > GetAllReplyAssistantGroupsResponse GetAllReplyAssistantGroups (int? offset = null, int? limit = null)
@@ -146,7 +167,7 @@ This method renders all groups ordered by creation date (ascending).  Authorizat
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -156,9 +177,11 @@ namespace Example
 {
     public class GetAllReplyAssistantGroupsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantGroupsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantGroupsApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -168,9 +191,11 @@ namespace Example
                 GetAllReplyAssistantGroupsResponse result = apiInstance.GetAllReplyAssistantGroups(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantGroupsApi.GetAllReplyAssistantGroups: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -197,7 +222,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getreplyassistantgroup"></a>
 # **GetReplyAssistantGroup**
 > ReplyAssistantGroup GetReplyAssistantGroup (string replyAssistantGroupId)
@@ -208,7 +239,7 @@ This method renders an entry group from given id.  Authorization​: only users 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -218,9 +249,11 @@ namespace Example
 {
     public class GetReplyAssistantGroupExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantGroupsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantGroupsApi(config);
             var replyAssistantGroupId = replyAssistantGroupId_example;  // string | 
 
             try
@@ -229,9 +262,11 @@ namespace Example
                 ReplyAssistantGroup result = apiInstance.GetReplyAssistantGroup(replyAssistantGroupId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantGroupsApi.GetReplyAssistantGroup: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -257,10 +292,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatereplyassistantgroup"></a>
 # **UpdateReplyAssistantGroup**
-> ReplyAssistantGroup UpdateReplyAssistantGroup (string replyAssistantGroupId, string name = null, List<string> entryIds = null, bool? autocomplete = null, int? position = null)
+> ReplyAssistantGroup UpdateReplyAssistantGroup (string replyAssistantGroupId, string name = null, Collection<string> entryIds = null, bool? autocomplete = null, int? position = null)
 
 Updating a reply assistant group
 
@@ -268,7 +309,7 @@ This method updates an existing group from given attributes and renders it in ca
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -278,12 +319,14 @@ namespace Example
 {
     public class UpdateReplyAssistantGroupExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantGroupsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantGroupsApi(config);
             var replyAssistantGroupId = replyAssistantGroupId_example;  // string | 
             var name = name_example;  // string | The name of the group. (optional) 
-            var entryIds = new List<string>(); // List<string> | List of the reply assistant entries in this group. (optional) 
+            var entryIds = new Collection<string>(); // Collection<string> | List of the reply assistant entries in this group. (optional) 
             var autocomplete = true;  // bool? | Used for autocompletion in chat. (optional) 
             var position = 56;  // int? | Used to determine the order of the groups in the interface, in ascending order. (optional) 
 
@@ -293,9 +336,11 @@ namespace Example
                 ReplyAssistantGroup result = apiInstance.UpdateReplyAssistantGroup(replyAssistantGroupId, name, entryIds, autocomplete, position);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantGroupsApi.UpdateReplyAssistantGroup: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -308,7 +353,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **replyAssistantGroupId** | **string**|  | 
  **name** | **string**| The name of the group. | [optional] 
- **entryIds** | [**List&lt;string&gt;**](string.md)| List of the reply assistant entries in this group. | [optional] 
+ **entryIds** | [**Collection&lt;string&gt;**](string.md)| List of the reply assistant entries in this group. | [optional] 
  **autocomplete** | **bool?**| Used for autocompletion in chat. | [optional] 
  **position** | **int?**| Used to determine the order of the groups in the interface, in ascending order. | [optional] 
 
@@ -325,4 +370,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**GetAllInterventionComments**](InterventionCommentsApi.md#getallinterventioncomments) | **GET** /intervention_comments | Getting all intervention comments
 [**GetInterventionComment**](InterventionCommentsApi.md#getinterventioncomment) | **GET** /intervention_comments/{interventionCommentId} | Getting an intervention comment from its id
 
+
 <a name="createinterventioncomment"></a>
 # **CreateInterventionComment**
 > InterventionComment CreateInterventionComment (string body, string interventionId, string userId)
@@ -19,7 +20,7 @@ This method creates a new intervention comment. In case of success it renders th
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -29,9 +30,11 @@ namespace Example
 {
     public class CreateInterventionCommentExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new InterventionCommentsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new InterventionCommentsApi(config);
             var body = body_example;  // string | The comment body (mandatory).
             var interventionId = interventionId_example;  // string | The comment intervention id (mandatory).
             var userId = userId_example;  // string | The comment user id (mandatory).
@@ -42,9 +45,11 @@ namespace Example
                 InterventionComment result = apiInstance.CreateInterventionComment(body, interventionId, userId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling InterventionCommentsApi.CreateInterventionComment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -72,7 +77,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deleteinterventioncomment"></a>
 # **DeleteInterventionComment**
 > InterventionComment DeleteInterventionComment (string interventionCommentId)
@@ -83,7 +94,7 @@ This method destroys an intervention comment. It renders comment itself. If toke
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -93,9 +104,11 @@ namespace Example
 {
     public class DeleteInterventionCommentExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new InterventionCommentsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new InterventionCommentsApi(config);
             var interventionCommentId = interventionCommentId_example;  // string | 
 
             try
@@ -104,9 +117,11 @@ namespace Example
                 InterventionComment result = apiInstance.DeleteInterventionComment(interventionCommentId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling InterventionCommentsApi.DeleteInterventionComment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -132,7 +147,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallinterventioncomments"></a>
 # **GetAllInterventionComments**
 > GetAllInterventionCommentsResponse GetAllInterventionComments (string interventionId = null, string threadId = null, string userId = null, string identityId = null, int? offset = null, int? limit = null)
@@ -143,7 +164,7 @@ This method renders interventions comments ordered by creation date (descending)
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -153,9 +174,11 @@ namespace Example
 {
     public class GetAllInterventionCommentsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new InterventionCommentsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new InterventionCommentsApi(config);
             var interventionId = interventionId_example;  // string | To filter comments on given intervention id. (optional) 
             var threadId = threadId_example;  // string | To filter comments on given thread id. (optional) 
             var userId = userId_example;  // string | To filter comments on given user id. (optional) 
@@ -169,9 +192,11 @@ namespace Example
                 GetAllInterventionCommentsResponse result = apiInstance.GetAllInterventionComments(interventionId, threadId, userId, identityId, offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling InterventionCommentsApi.GetAllInterventionComments: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -202,7 +227,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getinterventioncomment"></a>
 # **GetInterventionComment**
 > InterventionComment GetInterventionComment (string interventionCommentId)
@@ -213,7 +244,7 @@ This method renders an intervention comment from given id. If token’s user doe
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -223,9 +254,11 @@ namespace Example
 {
     public class GetInterventionCommentExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new InterventionCommentsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new InterventionCommentsApi(config);
             var interventionCommentId = interventionCommentId_example;  // string | 
 
             try
@@ -234,9 +267,11 @@ namespace Example
                 InterventionComment result = apiInstance.GetInterventionComment(interventionCommentId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling InterventionCommentsApi.GetInterventionComment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -262,4 +297,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

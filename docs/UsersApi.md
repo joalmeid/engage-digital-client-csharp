@@ -11,9 +11,10 @@ Method | HTTP request | Description
 [**InviteUser**](UsersApi.md#inviteuser) | **POST** /users/invite | Inviting a user
 [**UpdateUser**](UsersApi.md#updateuser) | **PUT** /users/{userId} | Updating a user
 
+
 <a name="createuser"></a>
 # **CreateUser**
-> User CreateUser (string email, string firstname, string lastname, string password, string roleId, List<string> categoryIds = null, bool? enabled = null, string externalId = null, string gender = null, List<string> identityIds = null, string locale = null, string nickname = null, List<string> teamIds = null, string timezone = null, List<string> spokenLanguages = null)
+> User CreateUser (string email, string firstname, string lastname, string password, string roleId, Collection<string> categoryIds = null, bool? enabled = null, string externalId = null, string gender = null, Collection<string> identityIds = null, string locale = null, string nickname = null, Collection<string> teamIds = null, string timezone = null, Collection<string> spokenLanguages = null)
 
 Creating a user
 
@@ -21,7 +22,7 @@ This method creates a new user. In case of success it renders the created user, 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -31,24 +32,26 @@ namespace Example
 {
     public class CreateUserExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new UsersApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new UsersApi(config);
             var email = email_example;  // string | User email (mandatory).
             var firstname = firstname_example;  // string | User firstname (mandatory).
             var lastname = lastname_example;  // string | User lastname (mandatory).
             var password = password_example;  // string | User plain password (mandatory).
             var roleId = roleId_example;  // string | User role id (mandatory).
-            var categoryIds = new List<string>(); // List<string> | User list of category ids (multiple). (optional) 
+            var categoryIds = new Collection<string>(); // Collection<string> | User list of category ids (multiple). (optional) 
             var enabled = true;  // bool? | Whether the user is enabled or not (boolean). (optional) 
             var externalId = externalId_example;  // string | User external id, used for SSO. (optional) 
             var gender = gender_example;  // string | User gender (\"man\" or \"woman\"). (optional) 
-            var identityIds = new List<string>(); // List<string> | User list of identity ids (multiple). (optional) 
+            var identityIds = new Collection<string>(); // Collection<string> | User list of identity ids (multiple). (optional) 
             var locale = locale_example;  // string | Language for the user interface. (optional) 
             var nickname = nickname_example;  // string | User nickname. (optional) 
-            var teamIds = new List<string>(); // List<string> | User list of team ids (multiple). (optional) 
+            var teamIds = new Collection<string>(); // Collection<string> | User list of team ids (multiple). (optional) 
             var timezone = timezone_example;  // string | Use the timezone endpoint to get the timezone name (String), default is empty for domain timezone. (optional) 
-            var spokenLanguages = new List<string>(); // List<string> | List of locales corresponding to the languages spoken by the user (multiple). (optional) 
+            var spokenLanguages = new Collection<string>(); // Collection<string> | List of locales corresponding to the languages spoken by the user (multiple). (optional) 
 
             try
             {
@@ -56,9 +59,11 @@ namespace Example
                 User result = apiInstance.CreateUser(email, firstname, lastname, password, roleId, categoryIds, enabled, externalId, gender, identityIds, locale, nickname, teamIds, timezone, spokenLanguages);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling UsersApi.CreateUser: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -74,16 +79,16 @@ Name | Type | Description  | Notes
  **lastname** | **string**| User lastname (mandatory). | 
  **password** | **string**| User plain password (mandatory). | 
  **roleId** | **string**| User role id (mandatory). | 
- **categoryIds** | [**List&lt;string&gt;**](string.md)| User list of category ids (multiple). | [optional] 
+ **categoryIds** | [**Collection&lt;string&gt;**](string.md)| User list of category ids (multiple). | [optional] 
  **enabled** | **bool?**| Whether the user is enabled or not (boolean). | [optional] 
  **externalId** | **string**| User external id, used for SSO. | [optional] 
  **gender** | **string**| User gender (\&quot;man\&quot; or \&quot;woman\&quot;). | [optional] 
- **identityIds** | [**List&lt;string&gt;**](string.md)| User list of identity ids (multiple). | [optional] 
+ **identityIds** | [**Collection&lt;string&gt;**](string.md)| User list of identity ids (multiple). | [optional] 
  **locale** | **string**| Language for the user interface. | [optional] 
  **nickname** | **string**| User nickname. | [optional] 
- **teamIds** | [**List&lt;string&gt;**](string.md)| User list of team ids (multiple). | [optional] 
+ **teamIds** | [**Collection&lt;string&gt;**](string.md)| User list of team ids (multiple). | [optional] 
  **timezone** | **string**| Use the timezone endpoint to get the timezone name (String), default is empty for domain timezone. | [optional] 
- **spokenLanguages** | [**List&lt;string&gt;**](string.md)| List of locales corresponding to the languages spoken by the user (multiple). | [optional] 
+ **spokenLanguages** | [**Collection&lt;string&gt;**](string.md)| List of locales corresponding to the languages spoken by the user (multiple). | [optional] 
 
 ### Return type
 
@@ -98,7 +103,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deleteuser"></a>
 # **DeleteUser**
 > User DeleteUser (string userId)
@@ -109,7 +120,7 @@ This method deletes the given user. In case of success it renders the deleted us
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -119,9 +130,11 @@ namespace Example
 {
     public class DeleteUserExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new UsersApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new UsersApi(config);
             var userId = userId_example;  // string | 
 
             try
@@ -130,9 +143,11 @@ namespace Example
                 User result = apiInstance.DeleteUser(userId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling UsersApi.DeleteUser: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -158,7 +173,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallusers"></a>
 # **GetAllUsers**
 > GetAllUsersResponse GetAllUsers (string email = null, string categoryId = null, string identityId = null, string externalId = null, string roleId = null, string teamId = null, int? offset = null, int? limit = null)
@@ -169,7 +190,7 @@ This method renders users ordered by creation date (descending).  Authorizationâ
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -179,9 +200,11 @@ namespace Example
 {
     public class GetAllUsersExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new UsersApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new UsersApi(config);
             var email = email_example;  // string | To filter users on given email. (optional) 
             var categoryId = categoryId_example;  // string | To filter users on given category id. (optional) 
             var identityId = identityId_example;  // string | To filter users on given identity id. (optional) 
@@ -197,9 +220,11 @@ namespace Example
                 GetAllUsersResponse result = apiInstance.GetAllUsers(email, categoryId, identityId, externalId, roleId, teamId, offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling UsersApi.GetAllUsers: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -232,7 +257,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getuser"></a>
 # **GetUser**
 > User GetUser (string userId)
@@ -243,7 +274,7 @@ This method renders a user from given id.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -253,9 +284,11 @@ namespace Example
 {
     public class GetUserExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new UsersApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new UsersApi(config);
             var userId = userId_example;  // string | 
 
             try
@@ -264,9 +297,11 @@ namespace Example
                 User result = apiInstance.GetUser(userId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling UsersApi.GetUser: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -292,10 +327,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="inviteuser"></a>
 # **InviteUser**
-> User InviteUser (string email, string firstname, string lastname, string roleId, List<string> categoryIds = null, bool? enabled = null, string externalId = null, string gender = null, List<string> identityIds = null, string locale = null, string nickname = null, List<string> teamIds = null, string timezone = null, List<string> spokenLanguages = null)
+> User InviteUser (string email, string firstname, string lastname, string roleId, Collection<string> categoryIds = null, bool? enabled = null, string externalId = null, string gender = null, Collection<string> identityIds = null, string locale = null, string nickname = null, Collection<string> teamIds = null, string timezone = null, Collection<string> spokenLanguages = null)
 
 Inviting a user
 
@@ -303,7 +344,7 @@ This method invites a new user. In case of success it renders the created user, 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -313,23 +354,25 @@ namespace Example
 {
     public class InviteUserExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new UsersApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new UsersApi(config);
             var email = email_example;  // string | User email (mandatory).
             var firstname = firstname_example;  // string | User firstname (mandatory).
             var lastname = lastname_example;  // string | User lastname (mandatory).
             var roleId = roleId_example;  // string | User role id (mandatory).
-            var categoryIds = new List<string>(); // List<string> | User list of category ids (multiple). (optional) 
+            var categoryIds = new Collection<string>(); // Collection<string> | User list of category ids (multiple). (optional) 
             var enabled = true;  // bool? | Whether the user is enabled or not (boolean). (optional) 
             var externalId = externalId_example;  // string | User external id. (optional) 
             var gender = gender_example;  // string | User gender (\"man\" or \"woman\"). (optional) 
-            var identityIds = new List<string>(); // List<string> | User list of identity ids (multiple). (optional) 
+            var identityIds = new Collection<string>(); // Collection<string> | User list of identity ids (multiple). (optional) 
             var locale = locale_example;  // string | Language for the user interface. (optional) 
             var nickname = nickname_example;  // string | User nickname. (optional) 
-            var teamIds = new List<string>(); // List<string> | User list of team ids (multiple). (optional) 
+            var teamIds = new Collection<string>(); // Collection<string> | User list of team ids (multiple). (optional) 
             var timezone = timezone_example;  // string | Use the timezone endpoint to get the timezone name (String), default is empty for (optional) 
-            var spokenLanguages = new List<string>(); // List<string> | List of locales corresponding to the languages spoken by the user (multiple). (optional) 
+            var spokenLanguages = new Collection<string>(); // Collection<string> | List of locales corresponding to the languages spoken by the user (multiple). (optional) 
 
             try
             {
@@ -337,9 +380,11 @@ namespace Example
                 User result = apiInstance.InviteUser(email, firstname, lastname, roleId, categoryIds, enabled, externalId, gender, identityIds, locale, nickname, teamIds, timezone, spokenLanguages);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling UsersApi.InviteUser: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -354,16 +399,16 @@ Name | Type | Description  | Notes
  **firstname** | **string**| User firstname (mandatory). | 
  **lastname** | **string**| User lastname (mandatory). | 
  **roleId** | **string**| User role id (mandatory). | 
- **categoryIds** | [**List&lt;string&gt;**](string.md)| User list of category ids (multiple). | [optional] 
+ **categoryIds** | [**Collection&lt;string&gt;**](string.md)| User list of category ids (multiple). | [optional] 
  **enabled** | **bool?**| Whether the user is enabled or not (boolean). | [optional] 
  **externalId** | **string**| User external id. | [optional] 
  **gender** | **string**| User gender (\&quot;man\&quot; or \&quot;woman\&quot;). | [optional] 
- **identityIds** | [**List&lt;string&gt;**](string.md)| User list of identity ids (multiple). | [optional] 
+ **identityIds** | [**Collection&lt;string&gt;**](string.md)| User list of identity ids (multiple). | [optional] 
  **locale** | **string**| Language for the user interface. | [optional] 
  **nickname** | **string**| User nickname. | [optional] 
- **teamIds** | [**List&lt;string&gt;**](string.md)| User list of team ids (multiple). | [optional] 
+ **teamIds** | [**Collection&lt;string&gt;**](string.md)| User list of team ids (multiple). | [optional] 
  **timezone** | **string**| Use the timezone endpoint to get the timezone name (String), default is empty for | [optional] 
- **spokenLanguages** | [**List&lt;string&gt;**](string.md)| List of locales corresponding to the languages spoken by the user (multiple). | [optional] 
+ **spokenLanguages** | [**Collection&lt;string&gt;**](string.md)| List of locales corresponding to the languages spoken by the user (multiple). | [optional] 
 
 ### Return type
 
@@ -378,10 +423,17 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **422** | Unprocessable Entity |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updateuser"></a>
 # **UpdateUser**
-> User UpdateUser (string userId, List<string> categoryIds = null, string email = null, bool? enabled = null, string externalId = null, string firstname = null, string gender = null, List<string> identityIds = null, string lastname = null, string locale = null, string nickname = null, string password = null, string roleId = null, List<string> teamIds = null, string timezone = null, List<string> spokenLanguages = null)
+> User UpdateUser (string userId, Collection<string> categoryIds = null, string email = null, bool? enabled = null, string externalId = null, string firstname = null, string gender = null, Collection<string> identityIds = null, string lastname = null, string locale = null, string nickname = null, string password = null, string roleId = null, Collection<string> teamIds = null, string timezone = null, Collection<string> spokenLanguages = null)
 
 Updating a user
 
@@ -389,7 +441,7 @@ This method updates users from given attributes and renders it in case of succes
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -399,25 +451,27 @@ namespace Example
 {
     public class UpdateUserExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new UsersApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new UsersApi(config);
             var userId = userId_example;  // string | 
-            var categoryIds = new List<string>(); // List<string> | User list of category ids (multiple). (optional) 
+            var categoryIds = new Collection<string>(); // Collection<string> | User list of category ids (multiple). (optional) 
             var email = email_example;  // string | User email. (optional) 
             var enabled = true;  // bool? | Whether the user is enabled or not (boolean). (optional) 
             var externalId = externalId_example;  // string | User external id, used for SSO. (optional) 
             var firstname = firstname_example;  // string | User firstname. (optional) 
             var gender = gender_example;  // string | User gender (\"man\" or \"woman\"). (optional) 
-            var identityIds = new List<string>(); // List<string> | User list of identity ids (multiple). (optional) 
+            var identityIds = new Collection<string>(); // Collection<string> | User list of identity ids (multiple). (optional) 
             var lastname = lastname_example;  // string | User lastname. (optional) 
             var locale = locale_example;  // string | Language for the user interface. (optional) 
             var nickname = nickname_example;  // string | User nickname. (optional) 
             var password = password_example;  // string | User plain password. (optional) 
             var roleId = roleId_example;  // string | User role id. (optional) 
-            var teamIds = new List<string>(); // List<string> | User list of team ids (multiple). (optional) 
+            var teamIds = new Collection<string>(); // Collection<string> | User list of team ids (multiple). (optional) 
             var timezone = timezone_example;  // string | Use the timezone endpoint to get the timezone name (String), default is empty for domain timezone. (optional) 
-            var spokenLanguages = new List<string>(); // List<string> | List of locales corresponding to the languages spoken by the user (multiple). (optional) 
+            var spokenLanguages = new Collection<string>(); // Collection<string> | List of locales corresponding to the languages spoken by the user (multiple). (optional) 
 
             try
             {
@@ -425,9 +479,11 @@ namespace Example
                 User result = apiInstance.UpdateUser(userId, categoryIds, email, enabled, externalId, firstname, gender, identityIds, lastname, locale, nickname, password, roleId, teamIds, timezone, spokenLanguages);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling UsersApi.UpdateUser: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -439,21 +495,21 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **string**|  | 
- **categoryIds** | [**List&lt;string&gt;**](string.md)| User list of category ids (multiple). | [optional] 
+ **categoryIds** | [**Collection&lt;string&gt;**](string.md)| User list of category ids (multiple). | [optional] 
  **email** | **string**| User email. | [optional] 
  **enabled** | **bool?**| Whether the user is enabled or not (boolean). | [optional] 
  **externalId** | **string**| User external id, used for SSO. | [optional] 
  **firstname** | **string**| User firstname. | [optional] 
  **gender** | **string**| User gender (\&quot;man\&quot; or \&quot;woman\&quot;). | [optional] 
- **identityIds** | [**List&lt;string&gt;**](string.md)| User list of identity ids (multiple). | [optional] 
+ **identityIds** | [**Collection&lt;string&gt;**](string.md)| User list of identity ids (multiple). | [optional] 
  **lastname** | **string**| User lastname. | [optional] 
  **locale** | **string**| Language for the user interface. | [optional] 
  **nickname** | **string**| User nickname. | [optional] 
  **password** | **string**| User plain password. | [optional] 
  **roleId** | **string**| User role id. | [optional] 
- **teamIds** | [**List&lt;string&gt;**](string.md)| User list of team ids (multiple). | [optional] 
+ **teamIds** | [**Collection&lt;string&gt;**](string.md)| User list of team ids (multiple). | [optional] 
  **timezone** | **string**| Use the timezone endpoint to get the timezone name (String), default is empty for domain timezone. | [optional] 
- **spokenLanguages** | [**List&lt;string&gt;**](string.md)| List of locales corresponding to the languages spoken by the user (multiple). | [optional] 
+ **spokenLanguages** | [**Collection&lt;string&gt;**](string.md)| List of locales corresponding to the languages spoken by the user (multiple). | [optional] 
 
 ### Return type
 
@@ -468,4 +524,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

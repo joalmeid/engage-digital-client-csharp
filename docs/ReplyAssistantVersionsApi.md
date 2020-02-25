@@ -10,9 +10,10 @@ Method | HTTP request | Description
 [**GetReplyAssistantVersion**](ReplyAssistantVersionsApi.md#getreplyassistantversion) | **GET** /reply_assistant/versions/{replyAssistantVersionId} | Getting a reply assistant version from its id
 [**UpdateReplyAssistantVersion**](ReplyAssistantVersionsApi.md#updatereplyassistantversion) | **PUT** /reply_assistant/versions/{replyAssistantVersionId} | Updating a reply assistant version
 
+
 <a name="createreplyassistantversion"></a>
 # **CreateReplyAssistantVersion**
-> ReplyAssistantVersion CreateReplyAssistantVersion (string body, string entryId, List<string> sourceIds = null, string format = null, string language = null)
+> ReplyAssistantVersion CreateReplyAssistantVersion (string body, string entryId, Collection<string> sourceIds = null, string format = null, string language = null)
 
 Creating a reply assistant version
 
@@ -20,7 +21,7 @@ This method creates a reply assistant version. In case of success it renders the
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -30,12 +31,14 @@ namespace Example
 {
     public class CreateReplyAssistantVersionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantVersionsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantVersionsApi(config);
             var body = body_example;  // string | Body of the version
             var entryId = entryId_example;  // string | Reply assistant entry id (mandatory)
-            var sourceIds = new List<string>(); // List<string> | Source ids (array) (optional) 
+            var sourceIds = new Collection<string>(); // Collection<string> | Source ids (array) (optional) 
             var format = format_example;  // string | Either “text” or “html” (optional) 
             var language = language_example;  // string | Language (ex: “fr”) (optional) 
 
@@ -45,9 +48,11 @@ namespace Example
                 ReplyAssistantVersion result = apiInstance.CreateReplyAssistantVersion(body, entryId, sourceIds, format, language);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantVersionsApi.CreateReplyAssistantVersion: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -60,7 +65,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **string**| Body of the version | 
  **entryId** | **string**| Reply assistant entry id (mandatory) | 
- **sourceIds** | [**List&lt;string&gt;**](string.md)| Source ids (array) | [optional] 
+ **sourceIds** | [**Collection&lt;string&gt;**](string.md)| Source ids (array) | [optional] 
  **format** | **string**| Either “text” or “html” | [optional] 
  **language** | **string**| Language (ex: “fr”) | [optional] 
 
@@ -77,7 +82,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletereplyassistantversion"></a>
 # **DeleteReplyAssistantVersion**
 > ReplyAssistantVersion DeleteReplyAssistantVersion (string replyAssistantVersionId)
@@ -88,7 +99,7 @@ This method destroys an existing version. It renders the version itself. It rend
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -98,9 +109,11 @@ namespace Example
 {
     public class DeleteReplyAssistantVersionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantVersionsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantVersionsApi(config);
             var replyAssistantVersionId = replyAssistantVersionId_example;  // string | 
 
             try
@@ -109,9 +122,11 @@ namespace Example
                 ReplyAssistantVersion result = apiInstance.DeleteReplyAssistantVersion(replyAssistantVersionId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantVersionsApi.DeleteReplyAssistantVersion: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -137,7 +152,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallreplyassistantversions"></a>
 # **GetAllReplyAssistantVersions**
 > GetAllReplyAssistantVersionsResponse GetAllReplyAssistantVersions (int? offset = null, int? limit = null)
@@ -148,7 +169,7 @@ This method renders all reply assistant versions ordered by creation date (ascen
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -158,9 +179,11 @@ namespace Example
 {
     public class GetAllReplyAssistantVersionsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantVersionsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantVersionsApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -170,9 +193,11 @@ namespace Example
                 GetAllReplyAssistantVersionsResponse result = apiInstance.GetAllReplyAssistantVersions(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantVersionsApi.GetAllReplyAssistantVersions: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -199,7 +224,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getreplyassistantversion"></a>
 # **GetReplyAssistantVersion**
 > ReplyAssistantVersion GetReplyAssistantVersion (string replyAssistantVersionId)
@@ -210,7 +241,7 @@ This method renders a version from given id.  Authorization​: only users that 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -220,9 +251,11 @@ namespace Example
 {
     public class GetReplyAssistantVersionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantVersionsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantVersionsApi(config);
             var replyAssistantVersionId = replyAssistantVersionId_example;  // string | 
 
             try
@@ -231,9 +264,11 @@ namespace Example
                 ReplyAssistantVersion result = apiInstance.GetReplyAssistantVersion(replyAssistantVersionId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantVersionsApi.GetReplyAssistantVersion: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -259,10 +294,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatereplyassistantversion"></a>
 # **UpdateReplyAssistantVersion**
-> ReplyAssistantVersion UpdateReplyAssistantVersion (string replyAssistantVersionId, string body = null, string entryId = null, List<string> sourceIds = null, string format = null, string language = null)
+> ReplyAssistantVersion UpdateReplyAssistantVersion (string replyAssistantVersionId, string body = null, string entryId = null, Collection<string> sourceIds = null, string format = null, string language = null)
 
 Updating a reply assistant version
 
@@ -270,7 +311,7 @@ This method updates an existing version from given attributes and renders it in 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -280,13 +321,15 @@ namespace Example
 {
     public class UpdateReplyAssistantVersionExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ReplyAssistantVersionsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ReplyAssistantVersionsApi(config);
             var replyAssistantVersionId = replyAssistantVersionId_example;  // string | 
             var body = body_example;  // string | Body of the version (optional) 
             var entryId = entryId_example;  // string | Reply assistant entry id. (optional) 
-            var sourceIds = new List<string>(); // List<string> | Source ids (array) (optional) 
+            var sourceIds = new Collection<string>(); // Collection<string> | Source ids (array) (optional) 
             var format = format_example;  // string | Either “text” or “html” (optional) 
             var language = language_example;  // string | Language (ex: “fr”) (optional) 
 
@@ -296,9 +339,11 @@ namespace Example
                 ReplyAssistantVersion result = apiInstance.UpdateReplyAssistantVersion(replyAssistantVersionId, body, entryId, sourceIds, format, language);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ReplyAssistantVersionsApi.UpdateReplyAssistantVersion: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -312,7 +357,7 @@ Name | Type | Description  | Notes
  **replyAssistantVersionId** | **string**|  | 
  **body** | **string**| Body of the version | [optional] 
  **entryId** | **string**| Reply assistant entry id. | [optional] 
- **sourceIds** | [**List&lt;string&gt;**](string.md)| Source ids (array) | [optional] 
+ **sourceIds** | [**Collection&lt;string&gt;**](string.md)| Source ids (array) | [optional] 
  **format** | **string**| Either “text” or “html” | [optional] 
  **language** | **string**| Language (ex: “fr”) | [optional] 
 
@@ -329,4 +374,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

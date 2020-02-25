@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**GetIdentityGroup**](IdentityGroupsApi.md#getidentitygroup) | **GET** /identity_groups/{identityGroupId} | Getting an identity group from its id
 [**UpdateIdentityGroup**](IdentityGroupsApi.md#updateidentitygroup) | **PUT** /identity_groups/{identityGroupId} | Updating an identity group
 
+
 <a name="getallidentitygroups"></a>
 # **GetAllIdentityGroups**
 > GetAllIdentityGroupsResponse GetAllIdentityGroups (string firstname = null, string lastname = null, string email = null, string uuid = null, string sort = null, int? offset = null, int? limit = null)
@@ -18,7 +19,7 @@ This method renders identity groups ordered by creation date (descending). Note 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -28,9 +29,11 @@ namespace Example
 {
     public class GetAllIdentityGroupsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new IdentityGroupsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new IdentityGroupsApi(config);
             var firstname = firstname_example;  // string | To filter groups on given firstname. (optional) 
             var lastname = lastname_example;  // string | To filter groups on given lastname. (optional) 
             var email = email_example;  // string | To filter groups that have given email. (optional) 
@@ -45,9 +48,11 @@ namespace Example
                 GetAllIdentityGroupsResponse result = apiInstance.GetAllIdentityGroups(firstname, lastname, email, uuid, sort, offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling IdentityGroupsApi.GetAllIdentityGroups: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -79,7 +84,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getidentitygroup"></a>
 # **GetIdentityGroup**
 > IdentityGroup GetIdentityGroup (string identityGroupId)
@@ -90,7 +101,7 @@ This method renders an identity group from given id.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -100,9 +111,11 @@ namespace Example
 {
     public class GetIdentityGroupExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new IdentityGroupsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new IdentityGroupsApi(config);
             var identityGroupId = identityGroupId_example;  // string | 
 
             try
@@ -111,9 +124,11 @@ namespace Example
                 IdentityGroup result = apiInstance.GetIdentityGroup(identityGroupId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling IdentityGroupsApi.GetIdentityGroup: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -139,10 +154,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updateidentitygroup"></a>
 # **UpdateIdentityGroup**
-> IdentityGroup UpdateIdentityGroup (string identityGroupId, string company = null, string customFieldValuesCustomFieldKey = null, List<string> emails = null, string firstname = null, string gender = null, List<string> homePhones = null, string lastname = null, List<string> mobilePhones = null, string notes = null, List<string> tagIds = null)
+> IdentityGroup UpdateIdentityGroup (string identityGroupId, string company = null, string customFieldValuesCustomFieldKey = null, Collection<string> emails = null, string firstname = null, string gender = null, Collection<string> homePhones = null, string lastname = null, Collection<string> mobilePhones = null, string notes = null, Collection<string> tagIds = null)
 
 Updating an identity group
 
@@ -150,7 +171,7 @@ This method updates an identity group from given attributes and renders it in ca
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -160,20 +181,22 @@ namespace Example
 {
     public class UpdateIdentityGroupExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new IdentityGroupsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new IdentityGroupsApi(config);
             var identityGroupId = identityGroupId_example;  // string | 
             var company = company_example;  // string | Identity company. (optional) 
             var customFieldValuesCustomFieldKey = customFieldValuesCustomFieldKey_example;  // string | Identity custom field with key « custom_field_key ». It (optional) 
-            var emails = new List<string>(); // List<string> | Identity emails (multiple). (optional) 
+            var emails = new Collection<string>(); // Collection<string> | Identity emails (multiple). (optional) 
             var firstname = firstname_example;  // string | Identity firstname. (optional) 
             var gender = gender_example;  // string | Identity’s gender. It can be \"man\", \"woman\" or empty. (optional) 
-            var homePhones = new List<string>(); // List<string> | Identity home phones (mutiple). (optional) 
+            var homePhones = new Collection<string>(); // Collection<string> | Identity home phones (mutiple). (optional) 
             var lastname = lastname_example;  // string | Identity lastname. (optional) 
-            var mobilePhones = new List<string>(); // List<string> | Identity mobile phones (multiple). (optional) 
+            var mobilePhones = new Collection<string>(); // Collection<string> | Identity mobile phones (multiple). (optional) 
             var notes = notes_example;  // string | Identity notes. (optional) 
-            var tagIds = new List<string>(); // List<string> | Identity tag ids (multiple). (optional) 
+            var tagIds = new Collection<string>(); // Collection<string> | Identity tag ids (multiple). (optional) 
 
             try
             {
@@ -181,9 +204,11 @@ namespace Example
                 IdentityGroup result = apiInstance.UpdateIdentityGroup(identityGroupId, company, customFieldValuesCustomFieldKey, emails, firstname, gender, homePhones, lastname, mobilePhones, notes, tagIds);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling IdentityGroupsApi.UpdateIdentityGroup: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -197,14 +222,14 @@ Name | Type | Description  | Notes
  **identityGroupId** | **string**|  | 
  **company** | **string**| Identity company. | [optional] 
  **customFieldValuesCustomFieldKey** | **string**| Identity custom field with key « custom_field_key ». It | [optional] 
- **emails** | [**List&lt;string&gt;**](string.md)| Identity emails (multiple). | [optional] 
+ **emails** | [**Collection&lt;string&gt;**](string.md)| Identity emails (multiple). | [optional] 
  **firstname** | **string**| Identity firstname. | [optional] 
  **gender** | **string**| Identity’s gender. It can be \&quot;man\&quot;, \&quot;woman\&quot; or empty. | [optional] 
- **homePhones** | [**List&lt;string&gt;**](string.md)| Identity home phones (mutiple). | [optional] 
+ **homePhones** | [**Collection&lt;string&gt;**](string.md)| Identity home phones (mutiple). | [optional] 
  **lastname** | **string**| Identity lastname. | [optional] 
- **mobilePhones** | [**List&lt;string&gt;**](string.md)| Identity mobile phones (multiple). | [optional] 
+ **mobilePhones** | [**Collection&lt;string&gt;**](string.md)| Identity mobile phones (multiple). | [optional] 
  **notes** | **string**| Identity notes. | [optional] 
- **tagIds** | [**List&lt;string&gt;**](string.md)| Identity tag ids (multiple). | [optional] 
+ **tagIds** | [**Collection&lt;string&gt;**](string.md)| Identity tag ids (multiple). | [optional] 
 
 ### Return type
 
@@ -219,4 +244,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

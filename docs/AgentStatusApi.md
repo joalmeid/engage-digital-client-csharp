@@ -4,9 +4,10 @@ All URIs are relative to *https://DOMAIN.api.engagement.dimelo.com/1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ChangeAgentStatus**](AgentStatusApi.md#changeagentstatus) | **PUT** /status/{agentId} | Changing an agent&#x27;s status
+[**ChangeAgentStatus**](AgentStatusApi.md#changeagentstatus) | **PUT** /status/{agentId} | Changing an agent&#39;s status
 [**GetAgentStatus**](AgentStatusApi.md#getagentstatus) | **GET** /status/{agentId} | Get a connected agent status
 [**GetAllAgentStatus**](AgentStatusApi.md#getallagentstatus) | **GET** /status | Get all connected agents status
+
 
 <a name="changeagentstatus"></a>
 # **ChangeAgentStatus**
@@ -18,7 +19,7 @@ This method updates an agent's availability. Can be used to set either channels 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -28,9 +29,11 @@ namespace Example
 {
     public class ChangeAgentStatusExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new AgentStatusApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new AgentStatusApi(config);
             var agentId = agentId_example;  // string | 
             var status = status_example;  // string | A hash of channel_id => availability (must contain all channels). (optional) 
             var customStatusId = customStatusId_example;  // string | id of presence status (optional) (optional) 
@@ -41,9 +44,11 @@ namespace Example
                 AgentStatus result = apiInstance.ChangeAgentStatus(agentId, status, customStatusId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling AgentStatusApi.ChangeAgentStatus: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -71,7 +76,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getagentstatus"></a>
 # **GetAgentStatus**
 > AgentStatus GetAgentStatus (string agentId)
@@ -82,7 +93,7 @@ This method get the status of a connected agent. Returns a 404 if the user does 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -92,9 +103,11 @@ namespace Example
 {
     public class GetAgentStatusExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new AgentStatusApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new AgentStatusApi(config);
             var agentId = agentId_example;  // string | 
 
             try
@@ -103,9 +116,11 @@ namespace Example
                 AgentStatus result = apiInstance.GetAgentStatus(agentId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling AgentStatusApi.GetAgentStatus: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -131,10 +146,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getallagentstatus"></a>
 # **GetAllAgentStatus**
-> List<AgentStatus> GetAllAgentStatus ()
+> Collection&lt;AgentStatus&gt; GetAllAgentStatus ()
 
 Get all connected agents status
 
@@ -142,7 +163,7 @@ This method get all currently connected agents & their status.  Authorization​
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -152,19 +173,23 @@ namespace Example
 {
     public class GetAllAgentStatusExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new AgentStatusApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new AgentStatusApi(config);
 
             try
             {
                 // Get all connected agents status
-                List&lt;AgentStatus&gt; result = apiInstance.GetAllAgentStatus();
+                Collection<AgentStatus> result = apiInstance.GetAllAgentStatus();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling AgentStatusApi.GetAllAgentStatus: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -176,7 +201,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<AgentStatus>**](AgentStatus.md)
+[**Collection&lt;AgentStatus&gt;**](AgentStatus.md)
 
 ### Authorization
 
@@ -187,4 +212,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

@@ -1,4 +1,5 @@
 # RingCentral.EngageDigital.Model.ContentBodyFormatted
+always contains text a​nd​ html versions.
 ## Properties
 
 Name | Type | Description | Notes

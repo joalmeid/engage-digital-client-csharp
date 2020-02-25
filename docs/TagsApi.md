@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GetTag**](TagsApi.md#gettag) | **GET** /tags/{tagId} | Getting a tag from its id
 [**UpdateTag**](TagsApi.md#updatetag) | **PUT** /tags/{tagId} | Updating a tag
 
+
 <a name="createtag"></a>
 # **CreateTag**
 > Tag CreateTag (string name)
@@ -20,7 +21,7 @@ This method creates a new tag. In case of success it renders the created tag, ot
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -30,9 +31,11 @@ namespace Example
 {
     public class CreateTagExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TagsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TagsApi(config);
             var name = name_example;  // string | Tag name (mandatory).
 
             try
@@ -41,9 +44,11 @@ namespace Example
                 Tag result = apiInstance.CreateTag(name);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TagsApi.CreateTag: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -69,7 +74,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="deletetag"></a>
 # **DeleteTag**
 > Tag DeleteTag (string tagId)
@@ -80,7 +91,7 @@ This method destroys an existing tag. It renders tag itself. It renders a 404 if
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -90,9 +101,11 @@ namespace Example
 {
     public class DeleteTagExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TagsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TagsApi(config);
             var tagId = tagId_example;  // string | 
 
             try
@@ -101,9 +114,11 @@ namespace Example
                 Tag result = apiInstance.DeleteTag(tagId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TagsApi.DeleteTag: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -129,7 +144,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getalltags"></a>
 # **GetAllTags**
 > GetAllTagsResponse GetAllTags (int? offset = null, int? limit = null)
@@ -140,7 +161,7 @@ This method renders tags ordered by name (ascending).
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -150,9 +171,11 @@ namespace Example
 {
     public class GetAllTagsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TagsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TagsApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -162,9 +185,11 @@ namespace Example
                 GetAllTagsResponse result = apiInstance.GetAllTags(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TagsApi.GetAllTags: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -191,7 +216,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="gettag"></a>
 # **GetTag**
 > Tag GetTag (string tagId)
@@ -202,7 +233,7 @@ This method renders a tag from given id.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -212,9 +243,11 @@ namespace Example
 {
     public class GetTagExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TagsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TagsApi(config);
             var tagId = tagId_example;  // string | 
 
             try
@@ -223,9 +256,11 @@ namespace Example
                 Tag result = apiInstance.GetTag(tagId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TagsApi.GetTag: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -251,7 +286,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatetag"></a>
 # **UpdateTag**
 > Tag UpdateTag (string tagId, string name)
@@ -262,7 +303,7 @@ This method updates an existing tag from given attributes and renders it in case
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -272,9 +313,11 @@ namespace Example
 {
     public class UpdateTagExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new TagsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new TagsApi(config);
             var tagId = tagId_example;  // string | 
             var name = name_example;  // string | Tag’s label.
 
@@ -284,9 +327,11 @@ namespace Example
                 Tag result = apiInstance.UpdateTag(tagId, name);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling TagsApi.UpdateTag: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -313,4 +358,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

@@ -4,11 +4,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Body** | **string** |  | [optional] 
-**CreatedAt** | **DateTimeOffset?** |  | [optional] 
+**CreatedAt** | **DateTime** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **InterventionId** | **string** |  | [optional] 
 **ThreadId** | **string** |  | [optional] 
-**UpdatedAt** | **DateTimeOffset?** |  | [optional] 
+**UpdatedAt** | **DateTime** |  | [optional] 
 **UserId** | **string** |  | [optional] 
 **VidentityId** | **string** |  | [optional] 
 

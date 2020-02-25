@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **CommunityId** | **string** |  | [optional] 
 **CommunityUrl** | **string** |  | [optional] 
 **Company** | **string** |  | [optional] 
-**CreatedAt** | **DateTimeOffset?** |  | [optional] 
+**CreatedAt** | **DateTime** |  | [optional] 
 **DisplayName** | **string** |  | [optional] 
 **Email** | **string** |  | [optional] 
-**ExtraValues** | **Object** |  | [optional] 
+**ExtraValues** | [**Object**](.md) |  | [optional] 
 **Firstname** | **string** |  | [optional] 
 **ForeignId** | **string** |  | [optional] 
 **Gender** | **string** |  | [optional] 
@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **MobilePhone** | **string** |  | [optional] 
 **Screenname** | **string** |  | [optional] 
 **Type** | **string** |  | [optional] 
-**UpdatedAt** | **DateTimeOffset?** |  | [optional] 
-**UserIds** | **List&lt;string&gt;** |  | [optional] 
+**UpdatedAt** | **DateTime** |  | [optional] 
+**UserIds** | **Collection&lt;string&gt;** |  | [optional] 
 **Uuid** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

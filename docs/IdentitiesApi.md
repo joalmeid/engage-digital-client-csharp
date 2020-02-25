@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**GetAllIdentities**](IdentitiesApi.md#getallidentities) | **GET** /identities | Getting all identities
 [**GetIdentity**](IdentitiesApi.md#getidentity) | **GET** /identities/{identityId} | Getting an identity from its id
 
+
 <a name="getallidentities"></a>
 # **GetAllIdentities**
 > GetAllIdentitiesResponse GetAllIdentities (string communityId = null, string identityGroupId = null, string userId = null, string sort = null, string foreignId = null, string uuid = null, int? offset = null, int? limit = null)
@@ -17,7 +18,7 @@ This method renders identities ordered by creation date (descending). Only ident
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -27,9 +28,11 @@ namespace Example
 {
     public class GetAllIdentitiesExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new IdentitiesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new IdentitiesApi(config);
             var communityId = communityId_example;  // string | To filter identities on given community id. (optional) 
             var identityGroupId = identityGroupId_example;  // string | To filter on given group id. (optional) 
             var userId = userId_example;  // string | To filter identities on given user id. (optional) 
@@ -45,9 +48,11 @@ namespace Example
                 GetAllIdentitiesResponse result = apiInstance.GetAllIdentities(communityId, identityGroupId, userId, sort, foreignId, uuid, offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling IdentitiesApi.GetAllIdentities: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -80,7 +85,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getidentity"></a>
 # **GetIdentity**
 > Identity GetIdentity (string identityId)
@@ -91,7 +102,7 @@ This method renders an identity from given id. If tokenâ€™s user does not have â
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -101,9 +112,11 @@ namespace Example
 {
     public class GetIdentityExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new IdentitiesApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new IdentitiesApi(config);
             var identityId = identityId_example;  // string | 
 
             try
@@ -112,9 +125,11 @@ namespace Example
                 Identity result = apiInstance.GetIdentity(identityId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling IdentitiesApi.GetIdentity: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -140,4 +155,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

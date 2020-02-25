@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**GetChannel**](ChannelsApi.md#getchannel) | **GET** /channels/{channelId} | Getting a channel from its id
 [**UpdateChannel**](ChannelsApi.md#updatechannel) | **PUT** /channels/{channelId} | Updating a channel
 
+
 <a name="getallchannels"></a>
 # **GetAllChannels**
 > GetAllChannelsResponse GetAllChannels (int? offset = null, int? limit = null)
@@ -18,7 +19,7 @@ This method renders all channels ordered by date of creation.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -28,9 +29,11 @@ namespace Example
 {
     public class GetAllChannelsExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ChannelsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ChannelsApi(config);
             var offset = 56;  // int? | The record index to start. Default value is 0. (optional) 
             var limit = 56;  // int? | The max number of records to return. Default value is 30, max value is 150. (optional) 
 
@@ -40,9 +43,11 @@ namespace Example
                 GetAllChannelsResponse result = apiInstance.GetAllChannels(offset, limit);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ChannelsApi.GetAllChannels: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -69,7 +74,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="getchannel"></a>
 # **GetChannel**
 > Channel GetChannel (string channelId)
@@ -80,7 +91,7 @@ This method renders a channel from given id.
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -90,9 +101,11 @@ namespace Example
 {
     public class GetChannelExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ChannelsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ChannelsApi(config);
             var channelId = channelId_example;  // string | 
 
             try
@@ -101,9 +114,11 @@ namespace Example
                 Channel result = apiInstance.GetChannel(channelId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ChannelsApi.GetChannel: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -129,10 +144,16 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="updatechannel"></a>
 # **UpdateChannel**
-> Channel UpdateChannel (string channelId, string name = null, List<string> sourceIds = null, int? softCapability = null, int? hardCapability = null, int? taskTimeoutSeconds = null)
+> Channel UpdateChannel (string channelId, string name = null, Collection<string> sourceIds = null, int? softCapability = null, int? hardCapability = null, int? taskTimeoutSeconds = null)
 
 Updating a channel
 
@@ -140,7 +161,7 @@ This method updates an existing channel from given attributes and renders it in 
 
 ### Example
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RingCentral.EngageDigital.Api;
 using RingCentral.EngageDigital.Client;
@@ -150,12 +171,14 @@ namespace Example
 {
     public class UpdateChannelExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new ChannelsApi();
+            Configuration config = new Configuration();
+            config.BasePath = "https://DOMAIN.api.engagement.dimelo.com/1.0";
+            var apiInstance = new ChannelsApi(config);
             var channelId = channelId_example;  // string | 
             var name = name_example;  // string | The name of the channel. (optional) 
-            var sourceIds = new List<string>(); // List<string> | An array containing id of each source assigned to a channel (multiple). (optional) 
+            var sourceIds = new Collection<string>(); // Collection<string> | An array containing id of each source assigned to a channel (multiple). (optional) 
             var softCapability = 56;  // int? | Number of tasks that can be assigned to agent by the routing before they are considered \"occupied\". (optional) 
             var hardCapability = 56;  // int? | M​aximum number of tasks that can be assigned to agents. (optional) 
             var taskTimeoutSeconds = 56;  // int? | this field defines the time before a task expires (in seconds). (optional) 
@@ -166,9 +189,11 @@ namespace Example
                 Channel result = apiInstance.UpdateChannel(channelId, name, sourceIds, softCapability, hardCapability, taskTimeoutSeconds);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException  e)
             {
                 Debug.Print("Exception when calling ChannelsApi.UpdateChannel: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -181,7 +206,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **channelId** | **string**|  | 
  **name** | **string**| The name of the channel. | [optional] 
- **sourceIds** | [**List&lt;string&gt;**](string.md)| An array containing id of each source assigned to a channel (multiple). | [optional] 
+ **sourceIds** | [**Collection&lt;string&gt;**](string.md)| An array containing id of each source assigned to a channel (multiple). | [optional] 
  **softCapability** | **int?**| Number of tasks that can be assigned to agent by the routing before they are considered \&quot;occupied\&quot;. | [optional] 
  **hardCapability** | **int?**| M​aximum number of tasks that can be assigned to agents. | [optional] 
  **taskTimeoutSeconds** | **int?**| this field defines the time before a task expires (in seconds). | [optional] 
@@ -199,4 +224,10 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
