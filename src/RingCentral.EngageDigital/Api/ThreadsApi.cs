@@ -244,7 +244,7 @@ namespace RingCentral.EngageDigital.Api
         /// <param name="offset">The record index to start. Default value is 0. (optional)</param>
         /// <param name="limit">The max number of records to return. Default value is 30, max value is 150. (optional)</param>
         /// <returns>Task of GetAllThreadsResponse</returns>
-        System.Threading.Tasks.Task<GetAllThreadsResponse> GetAllThreadsAsync (int? q = default(int?), int? offset = default(int?), int? limit = default(int?));
+        System.Threading.Tasks.Task<GetAllThreadsResponse> GetAllThreadsAsync (string q, int? offset = default(int?), int? limit = default(int?));
 
         /// <summary>
         /// Getting all threads
@@ -257,7 +257,7 @@ namespace RingCentral.EngageDigital.Api
         /// <param name="offset">The record index to start. Default value is 0. (optional)</param>
         /// <param name="limit">The max number of records to return. Default value is 30, max value is 150. (optional)</param>
         /// <returns>Task of ApiResponse (GetAllThreadsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAllThreadsResponse>> GetAllThreadsAsyncWithHttpInfo (int? q = default(int?), int? offset = default(int?), int? limit = default(int?));
+        System.Threading.Tasks.Task<ApiResponse<GetAllThreadsResponse>> GetAllThreadsAsyncWithHttpInfo (string q, int? offset = default(int?), int? limit = default(int?));
         /// <summary>
         /// Getting a thread from its id
         /// </summary>
