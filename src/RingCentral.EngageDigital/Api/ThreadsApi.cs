@@ -103,7 +103,7 @@ namespace RingCentral.EngageDigital.Api
         /// <param name="offset">The record index to start. Default value is 0. (optional)</param>
         /// <param name="limit">The max number of records to return. Default value is 30, max value is 150. (optional)</param>
         /// <returns>GetAllThreadsResponse</returns>
-        GetAllThreadsResponse GetAllThreads (int? q = default(int?), int? offset = default(int?), int? limit = default(int?));
+        GetAllThreadsResponse GetAllThreads (string q, int? offset = default(int?), int? limit = default(int?));
 
         /// <summary>
         /// Getting all threads
@@ -116,7 +116,7 @@ namespace RingCentral.EngageDigital.Api
         /// <param name="offset">The record index to start. Default value is 0. (optional)</param>
         /// <param name="limit">The max number of records to return. Default value is 30, max value is 150. (optional)</param>
         /// <returns>ApiResponse of GetAllThreadsResponse</returns>
-        ApiResponse<GetAllThreadsResponse> GetAllThreadsWithHttpInfo (int? q = default(int?), int? offset = default(int?), int? limit = default(int?));
+        ApiResponse<GetAllThreadsResponse> GetAllThreadsWithHttpInfo (string q, int? offset = default(int?), int? limit = default(int?));
         /// <summary>
         /// Getting a thread from its id
         /// </summary>
@@ -797,7 +797,7 @@ namespace RingCentral.EngageDigital.Api
         /// <param name="offset">The record index to start. Default value is 0. (optional)</param>
         /// <param name="limit">The max number of records to return. Default value is 30, max value is 150. (optional)</param>
         /// <returns>GetAllThreadsResponse</returns>
-        public GetAllThreadsResponse GetAllThreads (int? q = default(int?), int? offset = default(int?), int? limit = default(int?))
+        public GetAllThreadsResponse GetAllThreads (string q, int? offset = default(int?), int? limit = default(int?))
         {
              RingCentral.EngageDigital.Client.ApiResponse<GetAllThreadsResponse> localVarResponse = GetAllThreadsWithHttpInfo(q, offset, limit);
              return localVarResponse.Data;
@@ -811,7 +811,7 @@ namespace RingCentral.EngageDigital.Api
         /// <param name="offset">The record index to start. Default value is 0. (optional)</param>
         /// <param name="limit">The max number of records to return. Default value is 30, max value is 150. (optional)</param>
         /// <returns>ApiResponse of GetAllThreadsResponse</returns>
-        public RingCentral.EngageDigital.Client.ApiResponse< GetAllThreadsResponse > GetAllThreadsWithHttpInfo (int? q = default(int?), int? offset = default(int?), int? limit = default(int?))
+        public RingCentral.EngageDigital.Client.ApiResponse< GetAllThreadsResponse > GetAllThreadsWithHttpInfo (string q, int? offset = default(int?), int? limit = default(int?))
         {
             RingCentral.EngageDigital.Client.RequestOptions localVarRequestOptions = new RingCentral.EngageDigital.Client.RequestOptions();
 
